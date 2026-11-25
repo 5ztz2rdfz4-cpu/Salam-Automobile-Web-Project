@@ -81,8 +81,7 @@ Siap. Mulai sekarang:
 
 ## Nota data
 
-- Harga & insurans diambil dari `PROTON LIVE CALCULATOR.xlsx` dan `PERODUA LIVE NEW.xlsx` (Nov 2026).
-- Rebat/diskaun dan kadar faedah ikut nilai dalam sheet kiraan setiap model.
-- Roadtax kereta petrol ikut kadar Semenanjung mengikut cc. Roadtax EV (e.MAS 5, e.MAS 7, QV-E) ialah **anggaran**; sila semak dan kemas kini di Admin.
-- Perodua QV-E disembunyikan kerana tiada harga dalam sheet. Isi harga di Admin dan tandakan "Paparkan di website".
-- Harga Traz dalam sheet sama dengan Aruz; sila semak.
+- Harga, insurans dan roadtax ikut pricelist Proton, Proton e.MAS 2026 dan Perodua (26 Nov 2026).
+- Harga OTR termasuk insurans = OTR tanpa insurans + anggaran insurans. Rebat tidak ditolak dalam kalkulator.
+- Roadtax EV ikut pricelist e.MAS: e.MAS 5 Prime RM30, e.MAS 5 Premium RM60, e.MAS 7 RM180, e.MAS 7 PHEV RM120.
+- Proton S70 1.5T RS: Coming Soon / Open for Booking. Perodua QV-E disembunyikan (tiada harga).
