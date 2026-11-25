@@ -17,7 +17,7 @@
 const ADMIN_PASSWORD = 'TUKAR-PASSWORD-INI';      // WAJIB tukar. Minimum 8 aksara.
 const SPREADSHEET_ID = '1L-LWCiD7sOyTgykSZiEPjNZbeY_SN377K7LpjE96Ap8';
 const ADD_TO_LIVE = true;                          // true = lead baru juga masuk tab "Live"
-const NOTIFY_EMAIL = '';                           // isi emel untuk notifikasi lead baru (kosong = tiada)
+const NOTIFY_BY_EMAIL = true;                      // true = emel notifikasi lead baru ke akaun Google yang deploy skrip ini
 const PHOTO_FOLDER_NAME = 'Salam Automobile – Gambar Website';
 // ====================================
 
@@ -114,8 +114,9 @@ function saveLead(b) {
         live.appendRow([now, nama, phone, row[4], 'Website', 'Lead baru', '', 'Belum', 'Belum', now, nota]);
       }
     }
-    if (NOTIFY_EMAIL) {
-      MailApp.sendEmail(NOTIFY_EMAIL, 'Lead baru website: ' + nama + ' (' + row[4] + ')',
+    const notifyTo = NOTIFY_BY_EMAIL ? Session.getEffectiveUser().getEmail() : '';
+    if (notifyTo) {
+      MailApp.sendEmail(notifyTo, 'Lead baru website: ' + nama + ' (' + row[4] + ')',
         'Nama: ' + nama + '\nTelefon: ' + phone + '\nLokasi: ' + row[3] + '\nModel: ' + row[4] +
         '\nPekerjaan: ' + row[5] + '\nPendapatan bersih: RM' + row[6] + '\n\n' + row[7] + '\n\nWhatsApp: ' + row[11] + '\nSheet: ' + ss().getUrl());
     }

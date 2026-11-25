@@ -60,7 +60,7 @@ Buat sekali sahaja, lebih mudah guna komputer.
 
 Siap. Mulai sekarang:
 - Setiap borang yang diisi masuk ke tab **Leads Website** (status "Lead baru", dropdown status, link WhatsApp terus) **dan** tab **Live** (Sumber Lead: Website) supaya ikut kiraan tab Ringkasan.
-- Notifikasi emel: isi `NOTIFY_EMAIL` dalam Code.gs (pilihan).
+- Setiap lead baru juga dihantar sebagai emel ke akaun Google yang deploy skrip (boleh tutup dengan `NOTIFY_BY_EMAIL = false`).
 
 > Jika anda ubah kod Apps Script kemudian: **Deploy → Manage deployments → Edit (pensel) → Version: New version → Deploy**. URL kekal sama.
 
