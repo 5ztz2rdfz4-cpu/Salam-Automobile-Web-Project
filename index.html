@@ -15,27 +15,31 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=20261126">
 </head>
 <body>
 <script>
   (function () { var h = location.hash; if (h === "#kalkulator" || h === "#insurans") location.replace("kalkulator.html" + h); else if (h === "#delivery") location.replace("delivery.html"); })();
 </script>
-<a class="skip" href="#main">Terus ke kandungan</a>
+<a class="skip" href="#main" data-en="Skip to content">Terus ke kandungan</a>
 
-<nav class="nav" aria-label="Menu utama">
+<nav class="nav" aria-label="Menu utama" data-en-aria-label="Main menu">
   <div class="wrap nav-in">
-    <a class="nav-brand" href="index.html" aria-label="Salam Automobile, halaman utama">
+    <a class="nav-brand" href="index.html" aria-label="Salam Automobile, halaman utama" data-en-aria-label="Salam Automobile, home page">
       <img src="assets/img/brand/mark-salam.webp" alt="" width="400" height="173">
       <span>SALAM<small>AUTOMOBILE</small></span>
     </a>
     <div class="nav-links">
-      <a href="index.html" aria-current="page">Utama</a>
-      <a href="kalkulator.html">Kalkulator Loan</a>
+      <a href="index.html" aria-current="page" data-en="Home">Utama</a>
+      <a href="kalkulator.html" data-en="Loan Calculator">Kalkulator Loan</a>
       <a href="delivery.html">Delivery</a>
-      <a href="#borang">Semak Kelayakan</a>
+      <a href="#borang" data-en="Check Eligibility">Semak Kelayakan</a>
     </div>
-    <a class="btn btn-gold btn-sm js-wa" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
+    <div class="lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="ms" aria-pressed="true">BM</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-gold btn-sm js-wa" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
   </div>
 </nav>
 
@@ -45,11 +49,11 @@
     <div class="hero-copy">
       <img class="hero-logo" src="assets/img/brand/logo-salam-light-text.webp" alt="Salam Automobile · Your Trusted Automotive Partner" width="900" height="598">
       <p class="eyebrow">Authorised Sales Proton &amp; Perodua</p>
-      <h1>Kereta baharu idaman anda, diurus dari permohonan loan hingga serahan kunci.</h1>
-      <p class="lead">Salam Automobile membantu anda memiliki kereta baharu Proton dan Perodua dengan proses yang telus dan teratur. Semakan kelayakan percuma, permohonan ke bank, trade-in kereta lama dan serahan kunci, semuanya melalui satu rujukan.</p>
+      <h1 data-en="Your dream new car, handled from loan application to key handover.">Kereta baharu idaman anda, diurus dari permohonan loan hingga serahan kunci.</h1>
+      <p class="lead" data-en="Salam Automobile helps you own a new Proton or Perodua through a clear, well-organised process. Free eligibility check, bank application, trade-in of your old car and key handover, all through one point of contact.">Salam Automobile membantu anda memiliki kereta baharu Proton dan Perodua dengan proses yang telus dan teratur. Semakan kelayakan percuma, permohonan ke bank, trade-in kereta lama dan serahan kunci, semuanya melalui satu rujukan.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="kalkulator.html">Kira Ansuran Bulanan</a>
-        <a class="btn btn-ghost js-wa" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
+        <a class="btn btn-gold" href="kalkulator.html" data-en="Calculate Monthly Instalment">Kira Ansuran Bulanan</a>
+        <a class="btn btn-ghost js-wa" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
       </div>
     </div>
     <figure class="founder">
@@ -64,52 +68,52 @@
   </div>
 </header>
 
-<section class="facts" aria-label="Kelebihan Salam Automobile">
+<section class="facts" aria-label="Kelebihan Salam Automobile" data-en-aria-label="Why Salam Automobile">
   <div class="wrap facts-in">
     <div class="fact">
       <span class="fact-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-      <div><b>Semakan percuma</b><span>Kelayakan loan anda</span></div>
+      <div><b data-en="Free check">Semakan percuma</b><span data-en="Your loan eligibility">Kelayakan loan anda</span></div>
     </div>
     <div class="fact">
       <span class="fact-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16v-3l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v3"/><path d="M3 16h18"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/></svg></span>
-      <div><b>Proton &amp; Perodua</b><span>Semua model baharu</span></div>
+      <div><b>Proton &amp; Perodua</b><span data-en="All new models">Semua model baharu</span></div>
     </div>
     <div class="fact">
       <span class="fact-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg></span>
-      <div><b>Trade-in</b><span>Nilai kompetitif</span></div>
+      <div><b>Trade-in</b><span data-en="Competitive value">Nilai kompetitif</span></div>
     </div>
     <div class="fact">
       <span class="fact-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></span>
-      <div><b>Hingga serahan kunci</b><span>Diurus secara peribadi</span></div>
+      <div><b data-en="Through to handover">Hingga serahan kunci</b><span data-en="Personally handled">Diurus secara peribadi</span></div>
     </div>
   </div>
 </section>
 
 <section class="band band-alt" id="servis">
   <div class="wrap">
-    <p class="kick">Perkhidmatan kami</p>
-    <h2>Penyelesaian lengkap untuk pembelian kereta baharu</h2>
-    <p class="sub">Satu rujukan untuk semua urusan, dikendalikan secara profesional dan peribadi.</p>
+    <p class="kick" data-en="Our services">Perkhidmatan kami</p>
+    <h2 data-en="Complete support for buying a new car">Penyelesaian lengkap untuk pembelian kereta baharu</h2>
+    <p class="sub" data-en="One point of contact for everything, handled professionally and personally.">Satu rujukan untuk semua urusan, dikendalikan secara profesional dan peribadi.</p>
     <div class="services">
       <article>
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16v-3l2-5a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 5v3"/><path d="M3 16h18"/><circle cx="7.5" cy="16.5" r="1.8"/><circle cx="16.5" cy="16.5" r="1.8"/><path d="M5 12h14"/></svg></div>
-        <h3>Kereta baharu Proton &amp; Perodua</h3>
-        <p>Penerangan varian, harga OTR dan promosi semasa supaya anda membuat keputusan yang tepat.</p>
+        <h3 data-en="New Proton &amp; Perodua cars">Kereta baharu Proton &amp; Perodua</h3>
+        <p data-en="Variant details, OTR prices and current promotions so you can make the right choice.">Penerangan varian, harga OTR dan promosi semasa supaya anda membuat keputusan yang tepat.</p>
       </article>
       <article>
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 12h5M10 16h5"/></svg></div>
-        <h3>Semakan kelayakan &amp; loan</h3>
-        <p>Semakan percuma, penyediaan dokumen dan permohonan ke bank panel diurus sepenuhnya.</p>
+        <h3 data-en="Eligibility check &amp; loan">Semakan kelayakan &amp; loan</h3>
+        <p data-en="Free check, document preparation and panel bank applications, fully handled for you.">Semakan percuma, penyediaan dokumen dan permohonan ke bank panel diurus sepenuhnya.</p>
       </article>
       <article>
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13l-3-3"/><path d="M20 16H7l3 3"/></svg></div>
-        <h3>Trade-in kereta lama</h3>
-        <p>Nilai trade-in yang kompetitif, digunakan terus sebagai deposit kereta baharu anda.</p>
+        <h3 data-en="Trade in your old car">Trade-in kereta lama</h3>
+        <p data-en="A competitive trade-in value, used directly as the deposit for your new car.">Nilai trade-in yang kompetitif, digunakan terus sebagai deposit kereta baharu anda.</p>
       </article>
       <article>
         <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="M11 12l8-8M16 7l2 2M14 9l2 2"/></svg></div>
-        <h3>Serahan &amp; selepas jualan</h3>
-        <p>Pendampingan hingga hari serahan kunci dan sokongan berterusan selepas pembelian.</p>
+        <h3 data-en="Handover &amp; after-sales">Serahan &amp; selepas jualan</h3>
+        <p data-en="Support right up to handover day and continued help after your purchase.">Pendampingan hingga hari serahan kunci dan sokongan berterusan selepas pembelian.</p>
       </article>
     </div>
   </div>
@@ -117,16 +121,20 @@
 
 <section class="band band-alt" id="terokai">
   <div class="wrap">
-    <p class="kick">Terokai</p>
-    <h2>Kira ansuran atau lihat serahan pelanggan</h2>
+    <p class="kick" data-en="Explore">Terokai</p>
+    <h2 data-en="Start here">Mula di sini</h2>
     <div class="explore">
       <a class="explore-card" href="kalkulator.html">
-        <img src="assets/img/cars/proton-x50.webp" alt="" width="1100" height="605" loading="lazy">
-        <div><b>Kalkulator Loan</b><span>Pilih model Proton atau Perodua dan lihat anggaran ansuran bulanan, insurans dan cukai jalan.</span><em>Buka kalkulator →</em></div>
+        <span class="explore-img"><img src="assets/img/cars/proton-x50.webp" alt="" width="1100" height="605" loading="lazy"></span>
+        <b data-en="Loan Calculator">Kalkulator Loan</b>
+        <span class="explore-sub" data-en="Work out your monthly instalment">Kira ansuran bulanan anda</span>
+        <span class="go"><span data-en="Calculate Now">Kira Sekarang</span><i aria-hidden="true">&rarr;</i></span>
       </a>
       <a class="explore-card" href="delivery.html">
-        <img src="assets/img/delivery/delivery-09.webp" alt="" width="963" height="1280" loading="lazy" class="photo">
-        <div><b>Gambar Delivery</b><span>Serahan kunci kepada pelanggan Salam Automobile di seluruh Semenanjung.</span><em>Lihat galeri →</em></div>
+        <span class="explore-img photo"><img src="assets/img/delivery/delivery-09.webp" alt="" width="963" height="1280" loading="lazy"></span>
+        <b data-en="Delivery Gallery">Galeri Delivery</b>
+        <span class="explore-sub" data-en="Happy key handover moments">Detik bahagia serahan kunci</span>
+        <span class="go"><span data-en="View Gallery">Lihat Galeri</span><i aria-hidden="true">&rarr;</i></span>
       </a>
     </div>
   </div>
@@ -136,14 +144,14 @@
   <div class="wrap trade">
     <div>
       <p class="kick">Trade-in</p>
-      <h2>Naik taraf ke kereta baharu dengan trade-in</h2>
-      <p class="sub">Tidak perlu menjual sendiri dan melayan pembeli satu per satu. Kongsikan butiran kenderaan anda dan kami uruskan selebihnya dengan pantas dan telus.</p>
-      <div class="cta-row"><a class="btn btn-dark js-wa-trade" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a></div>
+      <h2 data-en="Upgrade to a new car with a trade-in">Naik taraf ke kereta baharu dengan trade-in</h2>
+      <p class="sub" data-en="No need to sell it yourself and deal with buyers one by one. Share your vehicle details and we handle the rest, quickly and transparently.">Tidak perlu menjual sendiri dan melayan pembeli satu per satu. Kongsikan butiran kenderaan anda dan kami uruskan selebihnya dengan pantas dan telus.</p>
+      <div class="cta-row"><a class="btn btn-dark js-wa-trade" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a></div>
     </div>
     <ol class="steps">
-      <li><b>Hantar butiran &amp; gambar geran</b><span>Model, tahun, mileage dan gambar geran kenderaan anda.</span></li>
-      <li><b>Terima tawaran nilai</b><span>Kenderaan dinilai dan tawaran harga diberikan dengan segera.</span></li>
-      <li><b>Ditolak terus ke kereta baharu</b><span>Nilai trade-in dijadikan deposit atau mengurangkan jumlah pinjaman.</span></li>
+      <li><b data-en="Send details &amp; a photo of your registration card">Hantar butiran &amp; gambar geran</b><span data-en="Model, year, mileage and a photo of your vehicle registration card.">Model, tahun, mileage dan gambar geran kenderaan anda.</span></li>
+      <li><b data-en="Receive a valuation">Terima tawaran nilai</b><span data-en="Your vehicle is assessed and a price offer is given promptly.">Kenderaan dinilai dan tawaran harga diberikan dengan segera.</span></li>
+      <li><b data-en="Deducted from your new car">Ditolak terus ke kereta baharu</b><span data-en="The trade-in value becomes your deposit or reduces your loan amount.">Nilai trade-in dijadikan deposit atau mengurangkan jumlah pinjaman.</span></li>
     </ol>
   </div>
 </section>
@@ -151,16 +159,16 @@
 <section class="band band-night" id="borang">
   <div class="wrap form-wrap">
     <div class="form-copy">
-      <p class="kick">Semakan kelayakan percuma</p>
-      <h2>Dapatkan sebut harga &amp; semak kelayakan loan anda</h2>
-      <p class="sub">Isi butiran di bawah. Kami akan hubungi anda untuk semakan kelayakan, sebut harga terkini dan promosi semasa. Tiada sebarang komitmen.</p>
+      <p class="kick" data-en="Free eligibility check">Semakan kelayakan percuma</p>
+      <h2 data-en="Get a quote &amp; check your loan eligibility">Dapatkan sebut harga &amp; semak kelayakan loan anda</h2>
+      <p class="sub" data-en="Fill in your details below. We will contact you with an eligibility check, the latest quote and current promotions. No obligation.">Isi butiran di bawah. Kami akan hubungi anda untuk semakan kelayakan, sebut harga terkini dan promosi semasa. Tiada sebarang komitmen.</p>
       <ul class="ticks">
-        <li>Maklum balas pantas melalui WhatsApp atau panggilan</li>
-        <li>Bantuan dokumen dan permohonan ke bank panel</li>
-        <li>Maklumat anda dirahsiakan dan hanya digunakan untuk urusan ini</li>
+        <li data-en="Fast response by WhatsApp or phone call">Maklum balas pantas melalui WhatsApp atau panggilan</li>
+        <li data-en="Help with documents and panel bank applications">Bantuan dokumen dan permohonan ke bank panel</li>
+        <li data-en="Your details are kept private and used only for this enquiry">Maklumat anda dirahsiakan dan hanya digunakan untuk urusan ini</li>
       </ul>
       <div class="contact-line">
-        <span>Atau hubungi terus:</span>
+        <span data-en="Or contact us directly:">Atau hubungi terus:</span>
         <a class="js-wa" href="#borang" target="_blank" rel="noopener"><b id="waTxt">WhatsApp</b></a>
         <a id="ttLink" href="https://www.tiktok.com/@salamauto.my" target="_blank" rel="noopener">TikTok <b id="ttTxt">@salamauto.my</b></a>
       </div>
@@ -168,12 +176,12 @@
 
     <form class="lead-form" id="leadForm" novalidate>
       <div class="field">
-        <label for="fNama">Nama</label>
-        <input id="fNama" name="nama" type="text" autocomplete="name" required maxlength="80" placeholder="Nama penuh">
+        <label for="fNama" data-en="Name">Nama</label>
+        <input id="fNama" name="nama" type="text" autocomplete="name" required maxlength="80" placeholder="Nama penuh" data-en-placeholder="Full name">
       </div>
       <div class="field">
-        <label for="fLokasi">Lokasi</label>
-        <input id="fLokasi" name="lokasi" type="text" list="negeriList" required maxlength="80" placeholder="Contoh: Shah Alam, Selangor">
+        <label for="fLokasi" data-en="Location">Lokasi</label>
+        <input id="fLokasi" name="lokasi" type="text" list="negeriList" required maxlength="80" placeholder="Contoh: Shah Alam, Selangor" data-en-placeholder="e.g. Shah Alam, Selangor">
         <datalist id="negeriList">
           <option value="Johor"></option><option value="Kedah"></option><option value="Kelantan"></option>
           <option value="Melaka"></option><option value="Negeri Sembilan"></option><option value="Pahang"></option>
@@ -183,34 +191,34 @@
         </datalist>
       </div>
       <div class="field">
-        <label for="fModel">Model Kereta</label>
+        <label for="fModel" data-en="Car Model">Model Kereta</label>
         <select id="fModel" name="model" required></select>
       </div>
       <div class="field">
-        <label for="fPhone">No. Phone</label>
-        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="Contoh: 012-345 6789">
+        <label for="fPhone" data-en="Phone No.">No. Phone</label>
+        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="Contoh: 012-345 6789" data-en-placeholder="e.g. 012-345 6789">
       </div>
       <fieldset class="field">
-        <legend>Jenis Pekerjaan</legend>
+        <legend data-en="Employment Type">Jenis Pekerjaan</legend>
         <div class="pills">
-          <label><input type="radio" name="kerja" id="fKerja1" value="Swasta" required><span>Swasta</span></label>
-          <label><input type="radio" name="kerja" id="fKerja2" value="Kerajaan"><span>Kerajaan</span></label>
+          <label><input type="radio" name="kerja" id="fKerja1" value="Swasta" required><span data-en="Private sector">Swasta</span></label>
+          <label><input type="radio" name="kerja" id="fKerja2" value="Kerajaan"><span data-en="Government">Kerajaan</span></label>
           <label><input type="radio" name="kerja" id="fKerja3" value="GLC"><span>GLC</span></label>
-          <label><input type="radio" name="kerja" id="fKerja4" value="Bekerja Sendiri"><span>Bekerja Sendiri</span></label>
+          <label><input type="radio" name="kerja" id="fKerja4" value="Bekerja Sendiri"><span data-en="Self-employed">Bekerja Sendiri</span></label>
         </div>
       </fieldset>
       <div class="field">
-        <label for="fGaji">Anggaran Pendapatan Bulanan (Bersih)</label>
-        <div class="money"><span>RM</span><input id="fGaji" name="gaji" type="number" inputmode="numeric" min="0" step="50" required placeholder="Contoh: 3500"></div>
+        <label for="fGaji" data-en="Estimated Monthly Income (Net)">Anggaran Pendapatan Bulanan (Bersih)</label>
+        <div class="money"><span>RM</span><input id="fGaji" name="gaji" type="number" inputmode="numeric" min="0" step="50" required placeholder="Contoh: 3500" data-en-placeholder="e.g. 3500"></div>
       </div>
-      <label class="consent" for="fConsent"><input id="fConsent" type="checkbox" required> Saya bersetuju dihubungi oleh Salam Automobile berkenaan pertanyaan ini.</label>
+      <label class="consent" for="fConsent"><input id="fConsent" type="checkbox" required> <span data-en="I agree to be contacted by Salam Automobile about this enquiry.">Saya bersetuju dihubungi oleh Salam Automobile berkenaan pertanyaan ini.</span></label>
       <input class="hp" type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="form-err" id="formErr" role="alert" hidden></p>
-      <button class="btn btn-gold btn-block" type="submit" id="fSubmit">Hantar &amp; Semak Kelayakan</button>
+      <button class="btn btn-gold btn-block" type="submit" id="fSubmit" data-en="Submit &amp; Check Eligibility">Hantar &amp; Semak Kelayakan</button>
       <div class="form-ok" id="formOk" hidden>
-        <strong>Terima kasih! Maklumat anda telah diterima.</strong>
-        <p>Kami akan menghubungi anda secepat mungkin. Untuk maklum balas segera, hubungi kami di WhatsApp.</p>
-        <a class="btn btn-gold js-wa-lead" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
+        <strong data-en="Thank you! We have received your details.">Terima kasih! Maklumat anda telah diterima.</strong>
+        <p data-en="We will contact you as soon as possible. For a faster reply, contact us on WhatsApp.">Kami akan menghubungi anda secepat mungkin. Untuk maklum balas segera, hubungi kami di WhatsApp.</p>
+        <a class="btn btn-gold js-wa-lead" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
       </div>
     </form>
   </div>
@@ -221,12 +229,13 @@
   <div class="wrap foot-in">
     <img src="assets/img/brand/logo-salam-light-text.webp" alt="Salam Automobile" width="900" height="598">
     <p>Muhammad Nabil Ahnaf · Authorised Sales Advisor | Founder Salam Automobile</p>
-    <p class="small">© <span id="year">2026</span> Salam Automobile. Harga dan kiraan di laman ini ialah anggaran dan boleh berubah tanpa notis.</p>
+    <p class="small">© <span id="year">2026</span> Salam Automobile. <span data-en="Prices and calculations on this site are estimates and may change without notice.">Harga dan kiraan di laman ini ialah anggaran dan boleh berubah tanpa notis.</span></p>
   </div>
 </footer>
 
-<script src="assets/js/settings.js"></script>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/settings.js?v=20261126"></script>
+<script src="assets/js/data.js?v=20261126"></script>
+<script src="assets/js/i18n.js?v=20261126"></script>
+<script src="assets/js/app.js?v=20261126"></script>
 </body>
 </html>

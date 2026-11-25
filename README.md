@@ -23,6 +23,7 @@ delivery.html            Galeri serahan kunci pelanggan
 admin.html               Halaman Admin
 assets/css/style.css     Reka bentuk
 assets/js/app.js         Kalkulator, galeri, borang
+assets/js/i18n.js        Pilihan bahasa BM / EN (teks EN pada atribut data-en dalam HTML)
 assets/js/admin.js       Logik Admin
 assets/js/data.js        Harga asal (dari Excel PROTON/PERODUA LIVE CALCULATOR)
 assets/js/settings.js    URL Apps Script (sambungan Google Sheet)
