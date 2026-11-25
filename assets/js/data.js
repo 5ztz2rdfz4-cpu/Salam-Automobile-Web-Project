@@ -14,7 +14,7 @@ window.SALAM_DEFAULT_CONFIG = {
   version: 1,
   updatedAt: "2026-11-25",
   business: {
-    whatsapp: "60123456789",
+    whatsapp: "601160548161",
     tiktok: "salamauto.my",
     sheetUrl: "https://docs.google.com/spreadsheets/d/1L-LWCiD7sOyTgykSZiEPjNZbeY_SN377K7LpjE96Ap8/edit"
   },
