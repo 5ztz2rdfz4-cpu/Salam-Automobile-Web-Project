@@ -38,7 +38,7 @@
           '<div class="grid2">' +
             '<label>Nama model<input type="text" data-k="name" value="' + esc(m.name) + '"></label>' +
             '<label>Kadar faedah tetap (%)<input type="number" step="0.05" data-k="rate" value="' + esc(m.rate) + '"></label>' +
-            '<label>Rebat / diskaun (RM)<input type="number" step="100" data-k="rebate" value="' + esc(m.rebate || 0) + '"></label>' +
+            '<label>Rebat asal di kalkulator (RM)<input type="number" step="100" data-k="rebate" value="' + esc(m.rebate || 0) + '"></label>' +
             '<label>Cukai jalan setahun (RM)<input type="number" step="1" data-k="roadtax" value="' + esc(m.roadtax || 0) + '"></label>' +
             '<label class="check"><input type="checkbox" data-k="active"' + (on ? " checked" : "") + "> Paparkan di website</label>" +
           "</div>" +
@@ -126,8 +126,7 @@
       '<label>Deposit asal (RM)<input type="number" step="100" data-s="calculator.defaultDpRm" data-n value="' + esc(c.defaultDpRm) + '"></label>' +
       '<label>Tempoh asal (tahun)<input type="number" step="1" data-s="calculator.defaultYears" data-n value="' + esc(c.defaultYears) + '"></label>' +
       '<label>Pilihan tempoh (tahun, pisah dengan koma)<input type="text" data-s="calculator.years" data-list value="' + esc((c.years || []).join(", ")) + '"></label>' +
-      '<label>Pilihan NCD (%, pisah dengan koma)<input type="text" data-s="calculator.ncdOptions" data-list value="' + esc((c.ncdOptions || []).join(", ")) + '"></label>' +
-      '<label class="check"><input type="checkbox" data-s="calculator.showRebate"' + (c.showRebate !== false ? " checked" : "") + "> Tolak rebat / diskaun dalam kiraan</label>";
+      '<label>Pilihan NCD (%, pisah dengan koma)<input type="text" data-s="calculator.ncdOptions" data-list value="' + esc((c.ncdOptions || []).join(", ")) + '"></label>';
   }
   function bindSettings() {
     $("settingsForm").addEventListener("input", function (e) {

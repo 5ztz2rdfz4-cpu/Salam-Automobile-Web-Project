@@ -7,7 +7,7 @@
   price     = Harga OTR tanpa insurans (RM)
   insurance = Anggaran premium asas insurans tahunan pada NCD 0% (RM)
   rate      = Kadar faedah tetap (% setahun) default untuk model
-  rebate    = Rebat / diskaun (RM) yang ditolak dari harga
+  rebate    = Rebat / diskaun asal (RM). Default 0; boleh diisi terus di kalkulator
   roadtax   = Cukai jalan tahunan (RM), boleh diatasi pada peringkat varian
 */
 window.SALAM_DEFAULT_CONFIG = {
@@ -33,18 +33,18 @@ window.SALAM_DEFAULT_CONFIG = {
       name: "Proton",
       logo: "assets/img/brand/logo-proton-dark.webp",
       models: [
-        { id: "saga", name: "Saga", image: "assets/img/cars/proton-saga.webp", rate: 3.0, rebate: 1500, roadtax: 90, active: true,
+        { id: "saga", name: "Saga", image: "assets/img/cars/proton-saga.webp", rate: 3.0, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "Saga 1.5 AT Standard", price: 38405, insurance: 1992 },
             { name: "Saga 1.5 AT Executive", price: 44405, insurance: 2160.45 },
             { name: "Saga 1.5 AT Premium", price: 49405, insurance: 2300.85 }
           ] },
-        { id: "s70-na", name: "S70 NA", image: "assets/img/cars/proton-s70.webp", rate: 3.0, rebate: 3000, roadtax: 90, active: true,
+        { id: "s70-na", name: "S70 NA", image: "assets/img/cars/proton-s70.webp", rate: 3.0, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "S70 NA Lite", price: 59800, insurance: 1996.65 },
             { name: "S70 NA Prime", price: 62800, insurance: 2080.9 }
           ] },
-        { id: "s70", name: "S70 1.5T", image: "assets/img/cars/proton-s70.webp", rate: 2.5, rebate: 7000, roadtax: 90, active: true,
+        { id: "s70", name: "S70 1.5T", image: "assets/img/cars/proton-s70.webp", rate: 2.5, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "S70 1.5T Executive", price: 73165, insurance: 3024.8 },
             { name: "S70 1.5T Premium", price: 79165, insurance: 3193.25 },
@@ -57,28 +57,28 @@ window.SALAM_DEFAULT_CONFIG = {
             { name: "X50 1.5 TGDi Premium", price: 96520, insurance: 8456.05 },
             { name: "X50 1.5 TGDi Flagship", price: 107855, insurance: 8929.9 }
           ] },
-        { id: "x70", name: "X70", image: "assets/img/cars/proton-x70.webp", rate: 2.5, rebate: 7000, roadtax: 90, active: true,
+        { id: "x70", name: "X70", image: "assets/img/cars/proton-x70.webp", rate: 2.5, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "X70 1.5 TGDi Executive", price: 106123, insurance: 3993.45 },
             { name: "X70 1.5 TGDi Premium", price: 117323, insurance: 6158.45 }
           ] },
-        { id: "x90", name: "X90", image: "assets/img/cars/proton-x90.webp", rate: 2.5, rebate: 7000, roadtax: 90, active: true,
+        { id: "x90", name: "X90", image: "assets/img/cars/proton-x90.webp", rate: 2.5, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "X90 1.5 TD Lite", price: 106093, insurance: 4023.4 },
             { name: "X90 1.5 TD Prime", price: 114293, insurance: 6104.2 },
             { name: "X90 1.5 TD Prime X", price: 119544, insurance: 7021.7 }
           ] },
-        { id: "emas5", name: "e.MAS 5", image: "assets/img/cars/proton-emas5.webp", rate: 2.3, rebate: 7000, roadtax: 40, active: true,
+        { id: "emas5", name: "e.MAS 5", image: "assets/img/cars/proton-emas5.webp", rate: 2.3, rebate: 0, roadtax: 40, active: true,
           variants: [
             { name: "e.MAS 5 Prime", price: 59800, insurance: 2400 },
             { name: "e.MAS 5 Premium", price: 72800, insurance: 2700 }
           ] },
-        { id: "emas7", name: "e.MAS 7", image: "assets/img/cars/proton-emas7.webp", rate: 2.3, rebate: 7000, roadtax: 200, active: true,
+        { id: "emas7", name: "e.MAS 7", image: "assets/img/cars/proton-emas7.webp", rate: 2.3, rebate: 0, roadtax: 200, active: true,
           variants: [
             { name: "e.MAS 7 Prime", price: 103800, insurance: 3050 },
             { name: "e.MAS 7 Premium", price: 119800, insurance: 4100 }
           ] },
-        { id: "emas7-phev", name: "e.MAS 7 PHEV", image: "assets/img/cars/proton-emas7-phev.webp", rate: 2.3, rebate: 7000, roadtax: 90, active: true,
+        { id: "emas7-phev", name: "e.MAS 7 PHEV", image: "assets/img/cars/proton-emas7-phev.webp", rate: 2.3, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "e.MAS 7 PHEV Prime", price: 109800, insurance: 3100 },
             { name: "e.MAS 7 PHEV Premium", price: 123800, insurance: 3400 },
@@ -91,26 +91,26 @@ window.SALAM_DEFAULT_CONFIG = {
       name: "Perodua",
       logo: "assets/img/brand/logo-perodua.webp",
       models: [
-        { id: "axia", name: "Axia", image: "assets/img/cars/perodua-axia.webp", rate: 3.3, rebate: 4900, roadtax: 20, active: true,
+        { id: "axia", name: "Axia", image: "assets/img/cars/perodua-axia.webp", rate: 3.3, rebate: 0, roadtax: 20, active: true,
           variants: [
             { name: "Axia X 1.0 CVT", price: 38905, insurance: 1544.86 },
             { name: "Axia SE 1.0 CVT", price: 43405, insurance: 1706.32 },
             { name: "Axia AV 1.0 CVT", price: 49405, insurance: 1900.08 }
           ] },
-        { id: "bezza", name: "Bezza", image: "assets/img/cars/perodua-bezza.webp", rate: 3.3, rebate: 5000, roadtax: 70, active: true,
+        { id: "bezza", name: "Bezza", image: "assets/img/cars/perodua-bezza.webp", rate: 3.3, rebate: 0, roadtax: 70, active: true,
           variants: [
             { name: "Bezza 1.0 GX AT", price: 36730, insurance: 1392, roadtax: 20 },
             { name: "Bezza 1.3 X AT", price: 44130, insurance: 1644 },
             { name: "Bezza 1.3 AV AT", price: 50130, insurance: 1740 }
           ] },
-        { id: "myvi", name: "Myvi", image: "assets/img/cars/perodua-myvi.webp", rate: 3.3, rebate: 1500, roadtax: 90, active: true,
+        { id: "myvi", name: "Myvi", image: "assets/img/cars/perodua-myvi.webp", rate: 3.3, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "Myvi 1.3 G", price: 48650, insurance: 1660, roadtax: 70 },
             { name: "Myvi 1.5 X", price: 51050, insurance: 1760 },
             { name: "Myvi 1.5 H", price: 55050, insurance: 1870 },
             { name: "Myvi 1.5 AV", price: 60060, insurance: 2010 }
           ] },
-        { id: "ativa", name: "Ativa", image: "assets/img/cars/perodua-ativa.webp", rate: 2.7, rebate: 2500, roadtax: 20, active: true,
+        { id: "ativa", name: "Ativa", image: "assets/img/cars/perodua-ativa.webp", rate: 2.7, rebate: 0, roadtax: 20, active: true,
           variants: [
             { name: "Ativa 1.0 Turbo X", price: 62660, insurance: 2100 },
             { name: "Ativa 1.0 Turbo H", price: 67960, insurance: 2226 },

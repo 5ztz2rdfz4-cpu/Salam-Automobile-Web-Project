@@ -42,7 +42,7 @@
       brand: b.id, model: m.id, variant: 0,
       dpMode: cc.defaultDpMode === "rm" ? "rm" : "pct",
       dpPct: num(cc.defaultDpPct, 10), dpRm: num(cc.defaultDpRm, 5000),
-      years: num(cc.defaultYears, 9), rate: num(m.rate, 3), ncd: 0
+      years: num(cc.defaultYears, 9), rate: num(m.rate, 3), rebate: num(m.rebate), ncd: 0
     };
   }
 
@@ -52,7 +52,7 @@
     var price = num(v.price), basic = num(v.insurance), ncd = C.calculator.ncdOptions[S.ncd] || 0;
     var insAfter = basic * (1 - ncd / 100);
     var otrIns = price + insAfter;
-    var rebate = C.calculator.showRebate === false ? 0 : num(m.rebate);
+    var rebate = Math.max(0, num(S.rebate));
     var base = Math.max(0, otrIns - rebate);
     var dp = S.dpMode === "pct" ? otrIns * S.dpPct / 100 : Math.min(S.dpRm, base);
     var loan = Math.max(0, base - dp);
@@ -111,6 +111,7 @@
     var cc = C.calculator;
     $("pOtr").textContent = rm(r.price);
     $("pOtrIns").textContent = rm(r.otrIns);
+    if (document.activeElement !== $("rebate")) $("rebate").value = S.rebate ? Math.round(S.rebate) : "";
 
     // Deposit controls
     $("dpModePct").setAttribute("aria-pressed", S.dpMode === "pct");
@@ -296,16 +297,18 @@
     $("brandTabs").addEventListener("click", function (e) {
       var b = e.target.closest("[data-brand]"); if (!b || b.dataset.brand === S.brand) return;
       S.brand = b.dataset.brand; var m = activeModels(brandById(S.brand))[0];
-      S.model = m.id; S.variant = 0; S.rate = num(m.rate, S.rate); renderAll(true);
+      S.model = m.id; S.variant = 0; S.rate = num(m.rate, S.rate); S.rebate = num(m.rebate); renderAll(true);
     });
     $("modelGrid").addEventListener("click", function (e) {
       var b = e.target.closest("[data-model]"); if (!b) return;
-      S.model = b.dataset.model; S.variant = 0; S.rate = num(model().rate, S.rate);
+      S.model = b.dataset.model; S.variant = 0; S.rate = num(model().rate, S.rate); S.rebate = num(model().rebate);
       renderModels(); renderVariants(); renderStage(true); render();
       var sel = $("fModel"), m = model(), val = brandById(S.brand).name + " " + m.name;
       if (!sel.dataset.touched) sel.value = val;
     });
     $("variant").addEventListener("change", function (e) { S.variant = +e.target.value; render(); });
+    $("rebate").addEventListener("input", function (e) { S.rebate = Math.max(0, num(e.target.value)); render(); });
+    $("rebate").addEventListener("blur", render);
     $("dpModePct").addEventListener("click", function () { if (S.dpMode === "rm") { var r = calc(); S.dpPct = r.otrIns ? Math.min(50, Math.round(r.dp / r.otrIns * 100)) : S.dpPct; } S.dpMode = "pct"; render(); });
     $("dpModeRm").addEventListener("click", function () { if (S.dpMode === "pct") S.dpRm = Math.round(calc().dp / 100) * 100; S.dpMode = "rm"; render(); });
     $("dpPct").addEventListener("input", function (e) { S.dpPct = +e.target.value; render(); });
