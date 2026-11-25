@@ -217,7 +217,7 @@
     sel.innerHTML = html;
     if (cur) sel.value = cur;
   }
-  function normPhone(p) { return String(p || "").replace(/[\s\-()]/g, ""); }
+  function normPhone(p) { return String(p || "").replace(/[\s\-()]/g, "").replace(/^\+?60(?=1)/, "0"); }
   function phoneOk(p) { return /^(\+?60|0)1[0-9]{8,9}$/.test(normPhone(p)); }
 
   function validate() {

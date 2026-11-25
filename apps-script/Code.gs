@@ -103,7 +103,8 @@ function saveLead(b) {
     const now = new Date();
     const id = Utilities.getUuid().slice(0, 8);
     const intl = phone.replace(/^\+/, '').replace(/^0/, '60');
-    const row = [now, nama, phone, clean(b.lokasi, 80), clean(b.model, 80), clean(b.kerja, 30),
+    const phoneText = "'" + phone;                  // simpan sebagai teks supaya 0 di depan kekal
+    const row = [now, nama, phoneText, clean(b.lokasi, 80), clean(b.model, 80), clean(b.kerja, 30),
       Number(b.gaji) || '', clean(b.calc, 600), 'Lead baru', '', '', 'https://wa.me/' + intl, id];
     sheet(LEADS_SHEET, LEADS_HEADERS).appendRow(row);
 
@@ -111,7 +112,7 @@ function saveLead(b) {
       const live = ss().getSheetByName(LIVE_SHEET);
       if (live) {
         const nota = 'Lead website. Lokasi: ' + row[3] + ' | Kerja: ' + row[5] + ' | Gaji bersih: RM' + (row[6] || '-') + ' | ' + row[7];
-        live.appendRow([now, nama, phone, row[4], 'Website', 'Lead baru', '', 'Belum', 'Belum', now, nota]);
+        live.appendRow([now, nama, phoneText, row[4], 'Website', 'Lead baru', '', 'Belum', 'Belum', now, nota]);
       }
     }
     const notifyTo = NOTIFY_BY_EMAIL ? Session.getEffectiveUser().getEmail() : '';

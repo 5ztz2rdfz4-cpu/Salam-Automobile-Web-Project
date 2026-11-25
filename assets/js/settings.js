@@ -6,5 +6,5 @@
   tidak boleh simpan ke Google Sheet.
 */
 window.SALAM_SETTINGS = {
-  appsScriptUrl: ""
+  appsScriptUrl: "https://script.google.com/macros/s/AKfycbysnSqm5cZd6ef0t64ZqUSmYsB1RDtAMNrVb_2KkoI6Y-ropddyLrR_2vUfUdfFj2D5/exec"
 };
