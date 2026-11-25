@@ -6,7 +6,7 @@ Website rasmi Salam Automobile (Muhammad Nabil Ahnaf, Authorised Sales Advisor P
 - Hero dengan gambar founder (berbingkai) dan nama di bawah gambar
 - Galeri serahan kunci pelanggan (no. plate dikaburkan, tiada nama pelanggan)
 - Kalkulator loan: pilih jenama → model (gambar kereta keluar) → varian
-  - Harga OTR tanpa insurans & harga OTR termasuk insurans
+  - Harga OTR tanpa insurans & harga OTR termasuk insurans (tiada rebat)
   - Deposit ikut **%** atau **RM**
   - Kadar faedah **tetap (fixed)**, tempoh 5–9 tahun, NCD 0–55%
   - Kiraan sama seperti Excel "Live Calculator" (rebat ditolak, faedah tetap × tempoh)
