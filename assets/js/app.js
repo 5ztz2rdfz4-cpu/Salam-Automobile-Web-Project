@@ -79,7 +79,7 @@
       var p = minPrice(m);
       return '<button type="button" class="model" data-model="' + esc(m.id) + '" aria-pressed="' + (m.id === S.model) + '">' +
         '<img src="' + esc(m.image) + '" alt="">' +
-        "<b>" + esc(m.name) + "</b><small>" + (isFinite(p) ? L("Dari ", "From ") + rm(p) : L("Hubungi kami", "Contact us")) + "</small></button>";
+        "<b>" + esc(m.name) + "</b>" + (m.comingSoon ? '<small class="soon-tag">Coming Soon</small>' : "<small>" + (isFinite(p) ? L("Dari ", "From ") + rm(p) : L("Hubungi kami", "Contact us")) + "</small>") + "</button>";
     }).join("");
   }
   function renderVariants() {
@@ -111,6 +111,18 @@
   /* ---------- Render: numbers ---------- */
   var lastMonthly = null;
   function render() {
+    var mm = model(), soon = !!mm.comingSoon;
+    document.querySelector(".settings").hidden = soon;
+    document.querySelector(".slip").hidden = soon;
+    $("soonBox").hidden = !soon;
+    $("stageBadge").hidden = !soon;
+    if ($("insurans")) $("insurans").hidden = soon;
+    if (soon) {
+      $("soonName").textContent = brandById(S.brand).name + " " + mm.name;
+      $("soonDesc").textContent = L(mm.descMs || "", mm.descEn || mm.descMs || "");
+      updateLinks();
+      return;
+    }
     var m = model(), v = variant(), r = calc();
     var cc = C.calculator;
     $("pOtr").textContent = rm(r.price);
@@ -183,6 +195,10 @@
   function updateLinks() {
     var general = wa(L("Assalamualaikum Salam Automobile, saya ingin bertanya tentang kereta baharu Proton / Perodua.", "Hello Salam Automobile, I would like to ask about a new Proton / Perodua car."));
     document.querySelectorAll(".js-wa").forEach(function (a) { a.href = general; });
+    if (HAS_CALC) {
+      var bm = brandById(S.brand).name + " " + model().name;
+      document.querySelectorAll(".js-wa-book").forEach(function (a) { a.href = wa(L("Assalamualaikum Salam Automobile, saya berminat untuk booking " + bm + ". Boleh kongsikan maklumat lanjut?", "Hello Salam Automobile, I am interested in booking the " + bm + ". Could you share more details?")); });
+    }
     if (HAS_CALC) document.querySelectorAll(".js-wa-calc").forEach(function (a) { a.href = wa(L("Assalamualaikum Salam Automobile, saya berminat dengan kiraan ini:\n\n", "Hello Salam Automobile, I am interested in this calculation:\n\n") + calcSummary() + L("\n\nBoleh bantu semak kelayakan saya?", "\n\nCould you help check my eligibility?")); });
     document.querySelectorAll(".js-wa-trade").forEach(function (a) { a.href = wa(L("Assalamualaikum Salam Automobile, saya ingin menyemak nilai trade-in kereta lama saya. Butiran dan gambar geran akan saya kongsikan.", "Hello Salam Automobile, I would like to check the trade-in value of my current car. I will share the details and registration card photo.")); });
     var n = waNumber();
@@ -332,6 +348,7 @@
     $("ncd").addEventListener("click", ncdClick);
     $("ncd2").addEventListener("click", ncdClick);
     $("toForm").addEventListener("click", function () { var sel = $("fModel"); if (!sel.dataset.touched) sel.value = brandById(S.brand).name + " " + model().name; });
+    $("toForm2").addEventListener("click", function () { var sel = $("fModel"); if (!sel.dataset.touched) sel.value = brandById(S.brand).name + " " + model().name; });
   }
   function bindGallery() {
     $("galPrev").addEventListener("click", function () { slide(-1); });

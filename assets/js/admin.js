@@ -40,6 +40,9 @@
             '<label>Kadar faedah tetap (%)<input type="number" step="0.05" data-k="rate" value="' + esc(m.rate) + '"></label>' +
             '<label>Cukai jalan setahun (RM)<input type="number" step="1" data-k="roadtax" value="' + esc(m.roadtax || 0) + '"></label>' +
             '<label class="check"><input type="checkbox" data-k="active"' + (on ? " checked" : "") + "> Paparkan di website</label>" +
+            '<label class="check"><input type="checkbox" data-k="comingSoon"' + (m.comingSoon ? " checked" : "") + "> Coming Soon / Open for Booking (sembunyi kalkulator)</label>" +
+            '<label>Penerangan Coming Soon (BM)<input type="text" data-k="descMs" value="' + esc(m.descMs || "") + '"></label>' +
+            '<label>Penerangan Coming Soon (EN)<input type="text" data-k="descEn" value="' + esc(m.descEn || "") + '"></label>' +
           "</div>" +
           '<div class="img-row"><label class="lbl" style="margin:0">Gambar kereta (URL, latar lutsinar .webp/.png)<input type="text" data-k="image" value="' + esc(m.image) + '"></label>' +
             '<label class="btn btn-line">Upload gambar<input type="file" accept="image/png,image/webp,image/jpeg" data-upload-car hidden></label></div>' +
@@ -66,8 +69,8 @@
       var t = e.target, at = modelAt(t); if (!at) return;
       if (t.dataset.k) {
         var k = t.dataset.k;
-        if (k === "active") at.m.active = t.checked;
-        else if (k === "name" || k === "image") at.m[k] = t.value;
+        if (k === "active" || k === "comingSoon") at.m[k] = t.checked;
+        else if (k === "name" || k === "image" || k === "descMs" || k === "descEn") at.m[k] = t.value;
         else at.m[k] = num(t.value);
         if (k === "image") { var img = t.closest("details").querySelector("summary img"); img.src = t.value; }
       } else if (t.dataset.vk) {
@@ -80,7 +83,7 @@
     });
     $("models").addEventListener("change", function (e) {
       var t = e.target;
-      if (t.dataset.k === "active" || t.dataset.k === "name" || t.dataset.k === "rate") { var at = modelAt(t); renderModels(at.mi); }
+      if (t.dataset.k === "active" || t.dataset.k === "comingSoon" || t.dataset.k === "name" || t.dataset.k === "rate") { var at = modelAt(t); renderModels(at.mi); }
       if (t.hasAttribute("data-upload-car") && t.files[0]) {
         var at2 = modelAt(t);
         if (!API) { alertMsg("Sambung Google Sheet dahulu untuk upload gambar."); return; }
