@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Salam Automobile</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Salam Automobile – Authorised Sales Advisor Proton & Perodua. Kira ansuran bulanan, anggaran insurans & cukai jalan, dan semak kelayakan loan secara percuma.">
+<meta name="description" content="Salam Automobile – Authorised Sales Proton & Perodua. Semakan kelayakan loan percuma, trade-in dan urusan kereta baharu hingga serahan kunci.">
 <meta name="theme-color" content="#16181c">
 <meta property="og:title" content="Salam Automobile · Proton & Perodua">
 <meta property="og:description" content="Kira ansuran kereta baharu Proton & Perodua dan semak kelayakan loan secara percuma.">
@@ -18,25 +18,28 @@
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-<a class="skip" href="#kalkulator">Terus ke kalkulator</a>
+<script>
+  (function () { var h = location.hash; if (h === "#kalkulator" || h === "#insurans") location.replace("kalkulator.html" + h); else if (h === "#delivery") location.replace("delivery.html"); })();
+</script>
+<a class="skip" href="#main">Terus ke kandungan</a>
 
 <nav class="nav" aria-label="Menu utama">
   <div class="wrap nav-in">
-    <a class="nav-brand" href="#top" aria-label="Salam Automobile, ke atas">
+    <a class="nav-brand" href="index.html" aria-label="Salam Automobile, halaman utama">
       <img src="assets/img/brand/mark-salam.webp" alt="" width="400" height="173">
       <span>SALAM<small>AUTOMOBILE</small></span>
     </a>
     <div class="nav-links">
-      <a href="#delivery">Delivery</a>
-      <a href="#servis">Perkhidmatan</a>
-      <a href="#kalkulator">Kalkulator Loan</a>
-      <a href="#insurans">Insurans</a>
+      <a href="index.html" aria-current="page">Utama</a>
+      <a href="kalkulator.html">Kalkulator Loan</a>
+      <a href="delivery.html">Delivery</a>
       <a href="#borang">Semak Kelayakan</a>
     </div>
     <a class="btn btn-gold btn-sm js-wa" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
   </div>
 </nav>
 
+<main id="main">
 <header class="hero" id="top">
   <div class="wrap hero-in">
     <div class="hero-copy">
@@ -45,7 +48,7 @@
       <h1>Kereta baharu idaman anda, diurus dari permohonan loan hingga serahan kunci.</h1>
       <p class="lead">Salam Automobile membantu anda memiliki kereta baharu Proton dan Perodua dengan proses yang telus dan teratur. Semakan kelayakan percuma, permohonan ke bank, trade-in kereta lama dan serahan kunci, semuanya melalui satu rujukan.</p>
       <div class="cta-row">
-        <a class="btn btn-gold" href="#kalkulator">Kira Ansuran Bulanan</a>
+        <a class="btn btn-gold" href="kalkulator.html">Kira Ansuran Bulanan</a>
         <a class="btn btn-ghost js-wa" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
       </div>
     </div>
@@ -82,24 +85,6 @@
   </div>
 </section>
 
-<section class="band" id="delivery">
-  <div class="wrap">
-    <div class="head">
-      <div>
-        <p class="kick">Serahan kunci pelanggan</p>
-        <h2>Kepercayaan pelanggan, kebanggaan kami</h2>
-        <p class="sub">Setiap serahan kunci ialah bukti komitmen kami. Terima kasih kepada semua pelanggan yang memilih Salam Automobile sebagai rakan automotif mereka.</p>
-      </div>
-      <div class="arrows">
-        <button type="button" id="galPrev" aria-label="Gambar sebelumnya">&#8249;</button>
-        <button type="button" id="galNext" aria-label="Gambar seterusnya">&#8250;</button>
-      </div>
-    </div>
-    <div class="gallery" id="gallery" tabindex="0" aria-label="Galeri serahan kereta"></div>
-    <p class="note">No. pendaftaran kenderaan dikaburkan untuk privasi pelanggan.</p>
-  </div>
-</section>
-
 <section class="band band-alt" id="servis">
   <div class="wrap">
     <p class="kick">Perkhidmatan kami</p>
@@ -130,127 +115,19 @@
   </div>
 </section>
 
-<section class="band" id="kalkulator">
+<section class="band band-alt" id="terokai">
   <div class="wrap">
-    <p class="kick">Kalkulator loan</p>
-    <h2>Pilih model, lihat ansuran bulanan anda</h2>
-    <p class="sub">Pilih jenama dan model kereta, kemudian laraskan deposit, tempoh dan kadar faedah tetap. Semua kiraan dikemas kini serta-merta.</p>
-
-    <div class="brand-tabs" id="brandTabs" role="tablist" aria-label="Pilih jenama"></div>
-    <div class="model-grid" id="modelGrid" aria-label="Pilih model"></div>
-
-    <div class="calc">
-      <div class="calc-left">
-        <div class="stage" id="stage">
-          <img class="stage-logo" id="stageLogo" src="assets/img/brand/logo-proton-dark.webp" alt="">
-          <img class="stage-car" id="stageCar" src="assets/img/cars/proton-saga.webp" alt="">
-          <div class="stage-floor" aria-hidden="true"></div>
-          <div class="stage-name"><span id="stageBrand">Proton</span><strong id="stageModel">Saga</strong></div>
-        </div>
-
-        <div class="card settings">
-          <label class="lbl" for="variant">Varian</label>
-          <select id="variant"></select>
-
-          <div class="price-pair">
-            <div><span>Harga OTR tanpa insurans</span><b id="pOtr">RM0</b></div>
-            <div><span>Harga OTR termasuk insurans</span><b id="pOtrIns">RM0</b></div>
-          </div>
-
-          <label class="lbl" for="rebate">Rebat / diskaun (RM)</label>
-          <div class="money"><span>RM</span><input id="rebate" type="number" inputmode="numeric" min="0" step="100" placeholder="0"></div>
-
-          <div class="lbl-row">
-            <span class="lbl" id="dpLabel">Deposit (downpayment)</span>
-            <div class="mini-seg" role="group" aria-labelledby="dpLabel">
-              <button type="button" id="dpModePct" aria-pressed="true">Ikut %</button>
-              <button type="button" id="dpModeRm" aria-pressed="false">Ikut RM</button>
-            </div>
-          </div>
-          <div id="dpPctBox">
-            <input id="dpPct" type="range" min="0" max="50" step="1" aria-label="Peratus deposit">
-            <div class="range-val"><span id="dpPctTxt">10%</span><b id="dpPctRm">RM0</b></div>
-          </div>
-          <div id="dpRmBox" hidden>
-            <div class="money"><span>RM</span><input id="dpRm" type="number" inputmode="numeric" min="0" step="100" aria-label="Deposit dalam RM"></div>
-            <div class="range-val"><span id="dpRmPct">0% daripada harga</span></div>
-          </div>
-
-          <span class="lbl" id="yrsLabel">Tempoh pinjaman</span>
-          <div class="seg" id="years" role="group" aria-labelledby="yrsLabel"></div>
-
-          <label class="lbl" for="rate">Kadar faedah tetap (fixed, % setahun)</label>
-          <div class="stepper">
-            <button type="button" id="rateDown" aria-label="Kurangkan kadar">&minus;</button>
-            <input id="rate" type="number" inputmode="decimal" step="0.05" min="0" max="15">
-            <button type="button" id="rateUp" aria-label="Tambah kadar">+</button>
-          </div>
-
-          <span class="lbl" id="ncdLabel">NCD insurans (No Claim Discount)</span>
-          <div class="seg seg-wrap" id="ncd" role="group" aria-labelledby="ncdLabel"></div>
-        </div>
-      </div>
-
-      <div class="slip" aria-live="polite">
-        <span class="slip-lbl">Anggaran ansuran bulanan</span>
-        <div class="big" id="monthly">RM0</div>
-        <div class="slip-meta" id="slipMeta"></div>
-        <dl class="rows">
-          <div><dt>Harga OTR tanpa insurans</dt><dd id="rOtr"></dd></div>
-          <div><dt id="rInsLbl">Insurans</dt><dd id="rIns"></dd></div>
-          <div class="sum"><dt>Harga OTR termasuk insurans</dt><dd id="rOtrIns"></dd></div>
-          <div id="rRebateRow" class="minus"><dt>Rebat / diskaun</dt><dd id="rRebate"></dd></div>
-          <div class="minus"><dt>Deposit (downpayment)</dt><dd id="rDp"></dd></div>
-          <div class="sum"><dt>Jumlah pinjaman</dt><dd id="rLoan"></dd></div>
-          <div><dt id="rIntLbl">Jumlah faedah</dt><dd id="rInt"></dd></div>
-          <div class="total"><dt>Jumlah bayaran balik</dt><dd id="rTotal"></dd></div>
-        </dl>
-        <h3>Banding ikut tempoh</h3>
-        <div class="bars" id="bars"></div>
-        <div class="slip-cta">
-          <a class="btn btn-gold js-wa-calc" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
-          <a class="btn btn-ghost" href="#borang" id="toForm">Semak kelayakan</a>
-        </div>
-        <p class="note">Anggaran sahaja. Harga, insurans, kadar faedah dan kelulusan loan tertakluk kepada terma bank dan pengedar semasa.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band band-alt" id="insurans">
-  <div class="wrap ins">
-    <div class="ins-copy">
-      <p class="kick">Insurans &amp; cukai jalan</p>
-      <h2>Anggaran kos tahunan kereta anda</h2>
-      <p class="sub">Kiraan ringkas untuk tahun pertama berdasarkan model dan NCD yang dipilih di kalkulator. Diskaun NCD ditolak daripada premium asas, kemudian cukai jalan ditambah.</p>
-      <table class="ncd-table">
-        <caption>Kadar NCD kereta persendirian</caption>
-        <thead><tr><th scope="col">Tahun tanpa tuntutan</th><th scope="col">NCD</th></tr></thead>
-        <tbody>
-          <tr><td>Kereta baharu / ada tuntutan</td><td>0%</td></tr>
-          <tr><td>1 tahun</td><td>25%</td></tr>
-          <tr><td>2 tahun berturut-turut</td><td>30%</td></tr>
-          <tr><td>3 tahun berturut-turut</td><td>38.33%</td></tr>
-          <tr><td>4 tahun berturut-turut</td><td>45%</td></tr>
-          <tr><td>5 tahun atau lebih</td><td>55%</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="card ins-card" aria-live="polite">
-      <div class="ins-head">
-        <img id="insCar" src="assets/img/cars/proton-saga.webp" alt="">
-        <div><span>Model dipilih</span><strong id="insModel">Saga</strong></div>
-      </div>
-      <span class="lbl" id="ncd2Label">NCD</span>
-      <div class="seg seg-wrap" id="ncd2" role="group" aria-labelledby="ncd2Label"></div>
-      <dl class="ins-rows">
-        <div><dt>Premium asas (basic premium)</dt><dd id="iBasic"></dd></div>
-        <div class="minus"><dt id="iNcdLbl">Diskaun NCD</dt><dd id="iNcd"></dd></div>
-        <div class="sum"><dt>Premium selepas NCD</dt><dd id="iNet"></dd></div>
-        <div><dt>Cukai jalan (roadtax)</dt><dd id="iRoad"></dd></div>
-        <div class="total"><dt>Anggaran jumlah setahun</dt><dd id="iTotal"></dd></div>
-      </dl>
-      <p class="note">Premium sebenar bergantung pada syarikat insurans, nilai dilindungi, lokasi dan perlindungan tambahan (contohnya cermin, banjir). Cukai jalan berdasarkan kadar Semenanjung Malaysia.</p>
+    <p class="kick">Terokai</p>
+    <h2>Kira ansuran atau lihat serahan pelanggan</h2>
+    <div class="explore">
+      <a class="explore-card" href="kalkulator.html">
+        <img src="assets/img/cars/proton-x50.webp" alt="" width="1100" height="605" loading="lazy">
+        <div><b>Kalkulator Loan</b><span>Pilih model Proton atau Perodua dan lihat anggaran ansuran bulanan, insurans dan cukai jalan.</span><em>Buka kalkulator →</em></div>
+      </a>
+      <a class="explore-card" href="delivery.html">
+        <img src="assets/img/delivery/delivery-09.webp" alt="" width="963" height="1280" loading="lazy" class="photo">
+        <div><b>Gambar Delivery</b><span>Serahan kunci kepada pelanggan Salam Automobile di seluruh Semenanjung.</span><em>Lihat galeri →</em></div>
+      </a>
     </div>
   </div>
 </section>
@@ -338,6 +215,7 @@
     </form>
   </div>
 </section>
+</main>
 
 <footer class="foot">
   <div class="wrap foot-in">
@@ -346,11 +224,6 @@
     <p class="small">© <span id="year">2026</span> Salam Automobile. Harga dan kiraan di laman ini ialah anggaran dan boleh berubah tanpa notis.</p>
   </div>
 </footer>
-
-<dialog class="lightbox" id="lightbox" aria-label="Gambar delivery">
-  <img id="lbImg" src="" alt="Serahan kereta kepada pelanggan Salam Automobile">
-  <button type="button" class="lb-close" id="lbClose" aria-label="Tutup">&times;</button>
-</dialog>
 
 <script src="assets/js/settings.js"></script>
 <script src="assets/js/data.js"></script>

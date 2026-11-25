@@ -6,6 +6,9 @@
   var API = (SETTINGS.appsScriptUrl || "").trim();
   var CACHE_KEY = "salam_config_cache_v1";
   var C = clone(window.SALAM_DEFAULT_CONFIG);
+  var HAS_CALC = !!document.getElementById("brandTabs");
+  var HAS_GALLERY = !!document.getElementById("gallery");
+  var HAS_FORM = !!document.getElementById("leadForm");
 
   function clone(o) { return JSON.parse(JSON.stringify(o)); }
   function $(id) { return document.getElementById(id); }
@@ -143,9 +146,6 @@
     $("rRebate").textContent = "− " + rm(r.rebate);
     $("rDp").textContent = "− " + rm(r.dp);
     $("rLoan").textContent = rm(r.loan);
-    $("rIntLbl").textContent = "Jumlah faedah (" + S.rate.toFixed(2) + "% × " + S.years + " thn)";
-    $("rInt").textContent = rm(r.interest);
-    $("rTotal").textContent = rm(r.total);
 
     var all = cc.years.map(function (y) { return { y: y, mo: calc(y).monthly }; });
     var mx = Math.max.apply(null, all.map(function (a) { return a.mo; })) || 1;
@@ -184,9 +184,10 @@
   function updateLinks() {
     var general = wa("Assalamualaikum Salam Automobile, saya ingin bertanya tentang kereta baharu Proton / Perodua.");
     document.querySelectorAll(".js-wa").forEach(function (a) { a.href = general; });
-    document.querySelectorAll(".js-wa-calc").forEach(function (a) { a.href = wa("Assalamualaikum Salam Automobile, saya berminat dengan kiraan ini:\n\n" + calcSummary() + "\n\nBoleh bantu semak kelayakan saya?"); });
+    if (HAS_CALC) document.querySelectorAll(".js-wa-calc").forEach(function (a) { a.href = wa("Assalamualaikum Salam Automobile, saya berminat dengan kiraan ini:\n\n" + calcSummary() + "\n\nBoleh bantu semak kelayakan saya?"); });
     document.querySelectorAll(".js-wa-trade").forEach(function (a) { a.href = wa("Assalamualaikum Salam Automobile, saya ingin menyemak nilai trade-in kereta lama saya. Butiran dan gambar geran akan saya kongsikan."); });
     var n = waNumber();
+    if (!$("waTxt")) return;
     $("waTxt").textContent = "WhatsApp " + (n ? "+" + n.replace(/^(60)(\d{2})(\d{3,4})(\d{4})$/, "$1 $2-$3 $4") : "");
     var tt = String(C.business.tiktok || "").replace(/^@/, "");
     $("ttLink").hidden = !tt;
@@ -248,7 +249,7 @@
       phone: normPhone($("fPhone").value),
       kerja: (f.querySelector('input[name="kerja"]:checked') || {}).value || "",
       gaji: num($("fGaji").value),
-      calc: calcSummary().replace(/\n/g, " | "),
+      calc: HAS_CALC ? calcSummary().replace(/\n/g, " | ") : "",
       website: $("fWebsite").value,
       page: location.href.split("#")[0]
     };
@@ -256,7 +257,7 @@
   function leadWaText(d) {
     return "Assalamualaikum Salam Automobile, saya ingin semak kelayakan loan.\n\n" +
       "Nama: " + d.nama + "\nLokasi: " + d.lokasi + "\nModel kereta: " + d.model + "\nNo. phone: " + d.phone +
-      "\nJenis pekerjaan: " + d.kerja + "\nPendapatan bersih: " + rm(d.gaji) + "\n\nKiraan di website:\n" + calcSummary();
+      "\nJenis pekerjaan: " + d.kerja + "\nPendapatan bersih: " + rm(d.gaji) + (HAS_CALC ? "\n\nKiraan di website:\n" + calcSummary() : "");
   }
 
   function submitLead(e) {
@@ -294,6 +295,16 @@
 
   /* ---------- Events ---------- */
   function bind() {
+    if (HAS_CALC) bindCalc();
+    if (HAS_FORM) {
+      $("fModel").addEventListener("change", function (e) { e.target.dataset.touched = "1"; });
+      $("leadForm").addEventListener("submit", submitLead);
+      $("leadForm").addEventListener("input", function (e) { var f = e.target.closest(".field"); if (f) f.classList.remove("err"); });
+    }
+    if (HAS_GALLERY) bindGallery();
+    if ($("year")) $("year").textContent = new Date().getFullYear();
+  }
+  function bindCalc() {
     $("brandTabs").addEventListener("click", function (e) {
       var b = e.target.closest("[data-brand]"); if (!b || b.dataset.brand === S.brand) return;
       S.brand = b.dataset.brand; var m = activeModels(brandById(S.brand))[0];
@@ -324,9 +335,8 @@
     $("ncd").addEventListener("click", ncdClick);
     $("ncd2").addEventListener("click", ncdClick);
     $("toForm").addEventListener("click", function () { var sel = $("fModel"); if (!sel.dataset.touched) sel.value = brandById(S.brand).name + " " + model().name; });
-    $("fModel").addEventListener("change", function (e) { e.target.dataset.touched = "1"; });
-    $("leadForm").addEventListener("submit", submitLead);
-    $("leadForm").addEventListener("input", function (e) { var f = e.target.closest(".field"); if (f) f.classList.remove("err"); });
+  }
+  function bindGallery() {
     $("galPrev").addEventListener("click", function () { slide(-1); });
     $("galNext").addEventListener("click", function () { slide(1); });
     $("gallery").addEventListener("keydown", function (e) { if (e.key === "ArrowLeft") slide(-1); if (e.key === "ArrowRight") slide(1); });
@@ -337,12 +347,13 @@
     });
     $("lbClose").addEventListener("click", function () { $("lightbox").close(); });
     $("lightbox").addEventListener("click", function (e) { if (e.target === e.currentTarget) e.currentTarget.close(); });
-    $("year").textContent = new Date().getFullYear();
   }
 
   /* ---------- Boot ---------- */
   function boot() {
-    initState(); renderAll(false); renderGallery(); fillModelSelect();
+    if (HAS_CALC) { initState(); renderAll(false); } else updateLinks();
+    if (HAS_GALLERY) renderGallery();
+    if (HAS_FORM) fillModelSelect();
   }
   bind(); boot();
 

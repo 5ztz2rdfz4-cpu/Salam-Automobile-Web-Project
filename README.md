@@ -17,7 +17,9 @@ Website rasmi Salam Automobile (Muhammad Nabil Ahnaf, Authorised Sales Advisor P
 ## Struktur fail
 
 ```
-index.html               Laman utama
+index.html               Laman utama (pengenalan, perkhidmatan, trade-in)
+kalkulator.html          Kalkulator loan + anggaran insurans & cukai jalan
+delivery.html            Galeri serahan kunci pelanggan
 admin.html               Halaman Admin
 assets/css/style.css     Reka bentuk
 assets/js/app.js         Kalkulator, galeri, borang
