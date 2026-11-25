@@ -51,6 +51,12 @@ window.SALAM_DEFAULT_CONFIG = {
             { name: "S70 1.5T Flagship", price: 87565, insurance: 5074.05 },
             { name: "S70 1.5T Flagship X", price: 88686, insurance: 9093.45 }
           ] },
+        { id: "s70-rs", name: "S70 1.5T RS", image: "assets/img/cars/proton-s70-rs.webp", rate: 2.5, rebate: 0, roadtax: 90, active: true, comingSoon: true,
+          descMs: "Sedan sport Proton dengan enjin 1.5 Turbo dan gaya RS yang lebih agresif: sport rim gelap, kaliper brek merah dan aksen merah di sekeliling badan.",
+          descEn: "Proton's sport sedan with a 1.5 Turbo engine and a bolder RS look: dark sport rims, red brake calipers and red accents all around.",
+          variants: [
+            { name: "S70 1.5T RS", price: 0, insurance: 0 }
+          ] },
         { id: "x50", name: "X50", image: "assets/img/cars/proton-x50.webp", rate: 2.5, rebate: 0, roadtax: 90, active: true,
           variants: [
             { name: "X50 1.5 TGDi Executive", price: 89120, insurance: 3519.05 },
