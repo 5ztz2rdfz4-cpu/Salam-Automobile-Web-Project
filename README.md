@@ -6,7 +6,7 @@ Website rasmi Salam Automobile (Muhammad Nabil Ahnaf, Authorised Sales Advisor P
 - Hero dengan gambar founder (berbingkai) dan nama di bawah gambar
 - Galeri serahan kunci pelanggan (no. plate dikaburkan, tiada nama pelanggan)
 - Kalkulator loan: pilih jenama → model (gambar kereta keluar) → varian
-  - Harga OTR tanpa insurans & harga OTR termasuk insurans
+  - Harga OTR tanpa insurans & harga OTR termasuk insurans (tiada rebat)
   - Deposit ikut **%** atau **RM**
   - Kadar faedah **tetap (fixed)**, tempoh 5–9 tahun, NCD 0–55%
   - Kiraan sama seperti Excel "Live Calculator" (rebat ditolak, faedah tetap × tempoh)
@@ -33,12 +33,15 @@ apps-script/Code.gs      Kod Google Apps Script (penghubung Google Sheet)
 
 ## Langkah 1 – Hidupkan website (GitHub Pages, percuma)
 
-1. Gabungkan (merge) branch ini ke `main`.
-2. GitHub → repo ini → **Settings → Pages**.
-3. *Source*: **Deploy from a branch** → Branch **main**, folder **/ (root)** → **Save**.
-4. Selepas 1–2 minit, website boleh dibuka di:
-   `https://5ztz2rdfz4-cpu.github.io/Salam-Automobile-Web-Project/`
-   (Admin: tambah `admin.html` di hujung link.)
+Website dihoskan percuma di GitHub Pages (organization `salamautomobile`, repo `salamautomobile.github.io`, branch **main**, folder **/ (root)**).
+
+- Website: https://salamautomobile.github.io
+- Kalkulator Loan: https://salamautomobile.github.io/kalkulator.html
+- Delivery: https://salamautomobile.github.io/delivery.html
+- Versi English: https://salamautomobile.github.io/?lang=en
+- Admin: https://salamautomobile.github.io/admin.html
+
+Setiap perubahan yang digabungkan ke `main` akan naik ke website dalam 1–2 minit.
 
 ## Langkah 2 – Sambung ke Google Sheet (untuk leads & Admin)
 
