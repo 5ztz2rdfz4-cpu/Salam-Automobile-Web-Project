@@ -38,7 +38,6 @@
           '<div class="grid2">' +
             '<label>Nama model<input type="text" data-k="name" value="' + esc(m.name) + '"></label>' +
             '<label>Kadar faedah tetap (%)<input type="number" step="0.05" data-k="rate" value="' + esc(m.rate) + '"></label>' +
-            '<label>Rebat asal di kalkulator (RM)<input type="number" step="100" data-k="rebate" value="' + esc(m.rebate || 0) + '"></label>' +
             '<label>Cukai jalan setahun (RM)<input type="number" step="1" data-k="roadtax" value="' + esc(m.roadtax || 0) + '"></label>' +
             '<label class="check"><input type="checkbox" data-k="active"' + (on ? " checked" : "") + "> Paparkan di website</label>" +
           "</div>" +
