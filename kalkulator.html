@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Kalkulator Loan Salam Automobile</title>
+<title data-en="Salam Automobile Loan Calculator">Kalkulator Loan Salam Automobile</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Kira ansuran bulanan kereta baharu Proton & Perodua, anggaran insurans, NCD dan cukai jalan.">
 <meta name="theme-color" content="#16181c">
@@ -15,36 +15,40 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/style.css?v=20261126">
 </head>
 <body class="page-dark">
-<a class="skip" href="#main">Terus ke kandungan</a>
+<a class="skip" href="#main" data-en="Skip to content">Terus ke kandungan</a>
 
-<nav class="nav" aria-label="Menu utama">
+<nav class="nav" aria-label="Menu utama" data-en-aria-label="Main menu">
   <div class="wrap nav-in">
-    <a class="nav-brand" href="index.html" aria-label="Salam Automobile, halaman utama">
+    <a class="nav-brand" href="index.html" aria-label="Salam Automobile, halaman utama" data-en-aria-label="Salam Automobile, home page">
       <img src="assets/img/brand/mark-salam.webp" alt="" width="400" height="173">
       <span>SALAM<small>AUTOMOBILE</small></span>
     </a>
     <div class="nav-links">
-      <a href="index.html">Utama</a>
-      <a href="kalkulator.html" aria-current="page">Kalkulator Loan</a>
+      <a href="index.html" data-en="Home">Utama</a>
+      <a href="kalkulator.html" aria-current="page" data-en="Loan Calculator">Kalkulator Loan</a>
       <a href="delivery.html">Delivery</a>
-      <a href="#borang">Semak Kelayakan</a>
+      <a href="#borang" data-en="Check Eligibility">Semak Kelayakan</a>
     </div>
-    <a class="btn btn-gold btn-sm js-wa" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
+    <div class="lang" role="group" aria-label="Bahasa / Language">
+      <button type="button" data-lang="ms" aria-pressed="true">BM</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <a class="btn btn-gold btn-sm js-wa" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
   </div>
 </nav>
 
 <main id="main">
 <section class="band page-first" id="kalkulator">
   <div class="wrap">
-    <p class="kick">Kalkulator loan</p>
-    <h2>Pilih model, lihat ansuran bulanan anda</h2>
-    <p class="sub">Pilih jenama dan model kereta, kemudian laraskan deposit, tempoh dan kadar faedah tetap. Semua kiraan dikemas kini serta-merta.</p>
+    <p class="kick" data-en="Loan calculator">Kalkulator loan</p>
+    <h2 data-en="Choose a model, see your monthly instalment">Pilih model, lihat ansuran bulanan anda</h2>
+    <p class="sub" data-en="Choose a brand and model, then adjust the down payment, loan period and fixed interest rate. Everything updates instantly.">Pilih jenama dan model kereta, kemudian laraskan deposit, tempoh dan kadar faedah tetap. Semua kiraan dikemas kini serta-merta.</p>
 
-    <div class="brand-tabs" id="brandTabs" role="tablist" aria-label="Pilih jenama"></div>
-    <div class="model-grid" id="modelGrid" aria-label="Pilih model"></div>
+    <div class="brand-tabs" id="brandTabs" role="tablist" aria-label="Pilih jenama" data-en-aria-label="Choose brand"></div>
+    <div class="model-grid" id="modelGrid" aria-label="Pilih model" data-en-aria-label="Choose model"></div>
 
     <div class="calc">
       <div class="calc-left">
@@ -56,67 +60,67 @@
         </div>
 
         <div class="card settings">
-          <label class="lbl" for="variant">Varian</label>
+          <label class="lbl" for="variant" data-en="Variant">Varian</label>
           <select id="variant"></select>
 
           <div class="price-pair">
-            <div><span>Harga OTR tanpa insurans</span><b id="pOtr">RM0</b></div>
-            <div><span>Harga OTR termasuk insurans</span><b id="pOtrIns">RM0</b></div>
+            <div><span data-en="OTR price without insurance">Harga OTR tanpa insurans</span><b id="pOtr">RM0</b></div>
+            <div><span data-en="OTR price with insurance">Harga OTR termasuk insurans</span><b id="pOtrIns">RM0</b></div>
           </div>
 
-          <label class="lbl" for="rebate">Rebat / diskaun (RM)</label>
+          <label class="lbl" for="rebate" data-en="Rebate / discount (RM)">Rebat / diskaun (RM)</label>
           <div class="money"><span>RM</span><input id="rebate" type="number" inputmode="numeric" min="0" step="100" placeholder="0"></div>
 
           <div class="lbl-row">
-            <span class="lbl" id="dpLabel">Deposit (downpayment)</span>
+            <span class="lbl" id="dpLabel" data-en="Down payment">Deposit (downpayment)</span>
             <div class="mini-seg" role="group" aria-labelledby="dpLabel">
-              <button type="button" id="dpModePct" aria-pressed="true">Ikut %</button>
-              <button type="button" id="dpModeRm" aria-pressed="false">Ikut RM</button>
+              <button type="button" id="dpModePct" aria-pressed="true" data-en="By %">Ikut %</button>
+              <button type="button" id="dpModeRm" aria-pressed="false" data-en="By RM">Ikut RM</button>
             </div>
           </div>
           <div id="dpPctBox">
-            <input id="dpPct" type="range" min="0" max="50" step="1" aria-label="Peratus deposit">
+            <input id="dpPct" type="range" min="0" max="50" step="1" aria-label="Peratus deposit" data-en-aria-label="Down payment percentage">
             <div class="range-val"><span id="dpPctTxt">10%</span><b id="dpPctRm">RM0</b></div>
           </div>
           <div id="dpRmBox" hidden>
-            <div class="money"><span>RM</span><input id="dpRm" type="number" inputmode="numeric" min="0" step="100" aria-label="Deposit dalam RM"></div>
+            <div class="money"><span>RM</span><input id="dpRm" type="number" inputmode="numeric" min="0" step="100" aria-label="Deposit dalam RM" data-en-aria-label="Down payment in RM"></div>
             <div class="range-val"><span id="dpRmPct">0% daripada harga</span></div>
           </div>
 
-          <span class="lbl" id="yrsLabel">Tempoh pinjaman</span>
+          <span class="lbl" id="yrsLabel" data-en="Loan period">Tempoh pinjaman</span>
           <div class="seg" id="years" role="group" aria-labelledby="yrsLabel"></div>
 
-          <label class="lbl" for="rate">Kadar faedah tetap (fixed, % setahun)</label>
+          <label class="lbl" for="rate" data-en="Fixed interest rate (% per year)">Kadar faedah tetap (fixed, % setahun)</label>
           <div class="stepper">
-            <button type="button" id="rateDown" aria-label="Kurangkan kadar">&minus;</button>
+            <button type="button" id="rateDown" aria-label="Kurangkan kadar" data-en-aria-label="Lower rate">&minus;</button>
             <input id="rate" type="number" inputmode="decimal" step="0.05" min="0" max="15">
-            <button type="button" id="rateUp" aria-label="Tambah kadar">+</button>
+            <button type="button" id="rateUp" aria-label="Tambah kadar" data-en-aria-label="Raise rate">+</button>
           </div>
 
-          <span class="lbl" id="ncdLabel">NCD insurans (No Claim Discount)</span>
+          <span class="lbl" id="ncdLabel" data-en="Insurance NCD (No Claim Discount)">NCD insurans (No Claim Discount)</span>
           <div class="seg seg-wrap" id="ncd" role="group" aria-labelledby="ncdLabel"></div>
         </div>
       </div>
 
       <div class="slip" aria-live="polite">
-        <span class="slip-lbl">Anggaran ansuran bulanan</span>
+        <span class="slip-lbl" data-en="Estimated monthly instalment">Anggaran ansuran bulanan</span>
         <div class="big" id="monthly">RM0</div>
         <div class="slip-meta" id="slipMeta"></div>
         <dl class="rows">
-          <div><dt>Harga OTR tanpa insurans</dt><dd id="rOtr"></dd></div>
+          <div><dt data-en="OTR price without insurance">Harga OTR tanpa insurans</dt><dd id="rOtr"></dd></div>
           <div><dt id="rInsLbl">Insurans</dt><dd id="rIns"></dd></div>
-          <div class="sum"><dt>Harga OTR termasuk insurans</dt><dd id="rOtrIns"></dd></div>
-          <div id="rRebateRow" class="minus"><dt>Rebat / diskaun</dt><dd id="rRebate"></dd></div>
-          <div class="minus"><dt>Deposit (downpayment)</dt><dd id="rDp"></dd></div>
-          <div class="total"><dt>Jumlah pinjaman</dt><dd id="rLoan"></dd></div>
+          <div class="sum"><dt data-en="OTR price with insurance">Harga OTR termasuk insurans</dt><dd id="rOtrIns"></dd></div>
+          <div id="rRebateRow" class="minus"><dt data-en="Rebate / discount">Rebat / diskaun</dt><dd id="rRebate"></dd></div>
+          <div class="minus"><dt data-en="Down payment">Deposit (downpayment)</dt><dd id="rDp"></dd></div>
+          <div class="total"><dt data-en="Loan amount">Jumlah pinjaman</dt><dd id="rLoan"></dd></div>
         </dl>
-        <h3>Banding ikut tempoh</h3>
+        <h3 data-en="Compare by period">Banding ikut tempoh</h3>
         <div class="bars" id="bars"></div>
         <div class="slip-cta">
-          <a class="btn btn-gold js-wa-calc" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
-          <a class="btn btn-ghost" href="#borang" id="toForm">Semak kelayakan</a>
+          <a class="btn btn-gold js-wa-calc" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
+          <a class="btn btn-ghost" href="#borang" id="toForm" data-en="Check eligibility">Semak kelayakan</a>
         </div>
-        <p class="note">Anggaran sahaja. Harga, insurans, kadar faedah dan kelulusan loan tertakluk kepada terma bank dan pengedar semasa.</p>
+        <p class="note" data-en="Estimate only. Prices, insurance, interest rates and loan approval are subject to current bank and dealer terms.">Anggaran sahaja. Harga, insurans, kadar faedah dan kelulusan loan tertakluk kepada terma bank dan pengedar semasa.</p>
       </div>
     </div>
   </div>
@@ -125,37 +129,37 @@
 <section class="band band-alt" id="insurans">
   <div class="wrap ins">
     <div class="ins-copy">
-      <p class="kick">Insurans &amp; cukai jalan</p>
-      <h2>Anggaran kos tahunan kereta anda</h2>
-      <p class="sub">Kiraan ringkas untuk tahun pertama berdasarkan model dan NCD yang dipilih di kalkulator. Diskaun NCD ditolak daripada premium asas, kemudian cukai jalan ditambah.</p>
+      <p class="kick" data-en="Insurance &amp; road tax">Insurans &amp; cukai jalan</p>
+      <h2 data-en="Your estimated yearly car costs">Anggaran kos tahunan kereta anda</h2>
+      <p class="sub" data-en="A quick first-year estimate based on the model and NCD chosen in the calculator. The NCD discount is taken off the basic premium, then road tax is added.">Kiraan ringkas untuk tahun pertama berdasarkan model dan NCD yang dipilih di kalkulator. Diskaun NCD ditolak daripada premium asas, kemudian cukai jalan ditambah.</p>
       <table class="ncd-table">
-        <caption>Kadar NCD kereta persendirian</caption>
-        <thead><tr><th scope="col">Tahun tanpa tuntutan</th><th scope="col">NCD</th></tr></thead>
+        <caption data-en="NCD rates for private cars">Kadar NCD kereta persendirian</caption>
+        <thead><tr><th scope="col" data-en="Claim-free years">Tahun tanpa tuntutan</th><th scope="col">NCD</th></tr></thead>
         <tbody>
-          <tr><td>Kereta baharu / ada tuntutan</td><td>0%</td></tr>
-          <tr><td>1 tahun</td><td>25%</td></tr>
-          <tr><td>2 tahun berturut-turut</td><td>30%</td></tr>
-          <tr><td>3 tahun berturut-turut</td><td>38.33%</td></tr>
-          <tr><td>4 tahun berturut-turut</td><td>45%</td></tr>
-          <tr><td>5 tahun atau lebih</td><td>55%</td></tr>
+          <tr><td data-en="New car / after a claim">Kereta baharu / ada tuntutan</td><td>0%</td></tr>
+          <tr><td data-en="1 year">1 tahun</td><td>25%</td></tr>
+          <tr><td data-en="2 consecutive years">2 tahun berturut-turut</td><td>30%</td></tr>
+          <tr><td data-en="3 consecutive years">3 tahun berturut-turut</td><td>38.33%</td></tr>
+          <tr><td data-en="4 consecutive years">4 tahun berturut-turut</td><td>45%</td></tr>
+          <tr><td data-en="5 years or more">5 tahun atau lebih</td><td>55%</td></tr>
         </tbody>
       </table>
     </div>
     <div class="card ins-card" aria-live="polite">
       <div class="ins-head">
         <img id="insCar" src="assets/img/cars/proton-saga.webp" alt="">
-        <div><span>Model dipilih</span><strong id="insModel">Saga</strong></div>
+        <div><span data-en="Selected model">Model dipilih</span><strong id="insModel">Saga</strong></div>
       </div>
       <span class="lbl" id="ncd2Label">NCD</span>
       <div class="seg seg-wrap" id="ncd2" role="group" aria-labelledby="ncd2Label"></div>
       <dl class="ins-rows">
-        <div><dt>Premium asas (basic premium)</dt><dd id="iBasic"></dd></div>
+        <div><dt data-en="Basic premium">Premium asas (basic premium)</dt><dd id="iBasic"></dd></div>
         <div class="minus"><dt id="iNcdLbl">Diskaun NCD</dt><dd id="iNcd"></dd></div>
-        <div class="sum"><dt>Premium selepas NCD</dt><dd id="iNet"></dd></div>
-        <div><dt>Cukai jalan (roadtax)</dt><dd id="iRoad"></dd></div>
-        <div class="total"><dt>Anggaran jumlah setahun</dt><dd id="iTotal"></dd></div>
+        <div class="sum"><dt data-en="Premium after NCD">Premium selepas NCD</dt><dd id="iNet"></dd></div>
+        <div><dt data-en="Road tax">Cukai jalan (roadtax)</dt><dd id="iRoad"></dd></div>
+        <div class="total"><dt data-en="Estimated yearly total">Anggaran jumlah setahun</dt><dd id="iTotal"></dd></div>
       </dl>
-      <p class="note">Premium sebenar bergantung pada syarikat insurans, nilai dilindungi, lokasi dan perlindungan tambahan (contohnya cermin, banjir). Cukai jalan berdasarkan kadar Semenanjung Malaysia.</p>
+      <p class="note" data-en="Actual premiums depend on the insurer, sum insured, location and add-on cover (e.g. windscreen, flood). Road tax uses Peninsular Malaysia rates.">Premium sebenar bergantung pada syarikat insurans, nilai dilindungi, lokasi dan perlindungan tambahan (contohnya cermin, banjir). Cukai jalan berdasarkan kadar Semenanjung Malaysia.</p>
     </div>
   </div>
 </section>
@@ -163,16 +167,16 @@
 <section class="band band-night" id="borang">
   <div class="wrap form-wrap">
     <div class="form-copy">
-      <p class="kick">Semakan kelayakan percuma</p>
-      <h2>Dapatkan sebut harga &amp; semak kelayakan loan anda</h2>
-      <p class="sub">Isi butiran di bawah. Kami akan hubungi anda untuk semakan kelayakan, sebut harga terkini dan promosi semasa. Tiada sebarang komitmen.</p>
+      <p class="kick" data-en="Free eligibility check">Semakan kelayakan percuma</p>
+      <h2 data-en="Get a quote &amp; check your loan eligibility">Dapatkan sebut harga &amp; semak kelayakan loan anda</h2>
+      <p class="sub" data-en="Fill in your details below. We will contact you with an eligibility check, the latest quote and current promotions. No obligation.">Isi butiran di bawah. Kami akan hubungi anda untuk semakan kelayakan, sebut harga terkini dan promosi semasa. Tiada sebarang komitmen.</p>
       <ul class="ticks">
-        <li>Maklum balas pantas melalui WhatsApp atau panggilan</li>
-        <li>Bantuan dokumen dan permohonan ke bank panel</li>
-        <li>Maklumat anda dirahsiakan dan hanya digunakan untuk urusan ini</li>
+        <li data-en="Fast response by WhatsApp or phone call">Maklum balas pantas melalui WhatsApp atau panggilan</li>
+        <li data-en="Help with documents and panel bank applications">Bantuan dokumen dan permohonan ke bank panel</li>
+        <li data-en="Your details are kept private and used only for this enquiry">Maklumat anda dirahsiakan dan hanya digunakan untuk urusan ini</li>
       </ul>
       <div class="contact-line">
-        <span>Atau hubungi terus:</span>
+        <span data-en="Or contact us directly:">Atau hubungi terus:</span>
         <a class="js-wa" href="#borang" target="_blank" rel="noopener"><b id="waTxt">WhatsApp</b></a>
         <a id="ttLink" href="https://www.tiktok.com/@salamauto.my" target="_blank" rel="noopener">TikTok <b id="ttTxt">@salamauto.my</b></a>
       </div>
@@ -180,12 +184,12 @@
 
     <form class="lead-form" id="leadForm" novalidate>
       <div class="field">
-        <label for="fNama">Nama</label>
-        <input id="fNama" name="nama" type="text" autocomplete="name" required maxlength="80" placeholder="Nama penuh">
+        <label for="fNama" data-en="Name">Nama</label>
+        <input id="fNama" name="nama" type="text" autocomplete="name" required maxlength="80" placeholder="Nama penuh" data-en-placeholder="Full name">
       </div>
       <div class="field">
-        <label for="fLokasi">Lokasi</label>
-        <input id="fLokasi" name="lokasi" type="text" list="negeriList" required maxlength="80" placeholder="Contoh: Shah Alam, Selangor">
+        <label for="fLokasi" data-en="Location">Lokasi</label>
+        <input id="fLokasi" name="lokasi" type="text" list="negeriList" required maxlength="80" placeholder="Contoh: Shah Alam, Selangor" data-en-placeholder="e.g. Shah Alam, Selangor">
         <datalist id="negeriList">
           <option value="Johor"></option><option value="Kedah"></option><option value="Kelantan"></option>
           <option value="Melaka"></option><option value="Negeri Sembilan"></option><option value="Pahang"></option>
@@ -195,34 +199,34 @@
         </datalist>
       </div>
       <div class="field">
-        <label for="fModel">Model Kereta</label>
+        <label for="fModel" data-en="Car Model">Model Kereta</label>
         <select id="fModel" name="model" required></select>
       </div>
       <div class="field">
-        <label for="fPhone">No. Phone</label>
-        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="Contoh: 012-345 6789">
+        <label for="fPhone" data-en="Phone No.">No. Phone</label>
+        <input id="fPhone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required maxlength="16" placeholder="Contoh: 012-345 6789" data-en-placeholder="e.g. 012-345 6789">
       </div>
       <fieldset class="field">
-        <legend>Jenis Pekerjaan</legend>
+        <legend data-en="Employment Type">Jenis Pekerjaan</legend>
         <div class="pills">
-          <label><input type="radio" name="kerja" id="fKerja1" value="Swasta" required><span>Swasta</span></label>
-          <label><input type="radio" name="kerja" id="fKerja2" value="Kerajaan"><span>Kerajaan</span></label>
+          <label><input type="radio" name="kerja" id="fKerja1" value="Swasta" required><span data-en="Private sector">Swasta</span></label>
+          <label><input type="radio" name="kerja" id="fKerja2" value="Kerajaan"><span data-en="Government">Kerajaan</span></label>
           <label><input type="radio" name="kerja" id="fKerja3" value="GLC"><span>GLC</span></label>
-          <label><input type="radio" name="kerja" id="fKerja4" value="Bekerja Sendiri"><span>Bekerja Sendiri</span></label>
+          <label><input type="radio" name="kerja" id="fKerja4" value="Bekerja Sendiri"><span data-en="Self-employed">Bekerja Sendiri</span></label>
         </div>
       </fieldset>
       <div class="field">
-        <label for="fGaji">Anggaran Pendapatan Bulanan (Bersih)</label>
-        <div class="money"><span>RM</span><input id="fGaji" name="gaji" type="number" inputmode="numeric" min="0" step="50" required placeholder="Contoh: 3500"></div>
+        <label for="fGaji" data-en="Estimated Monthly Income (Net)">Anggaran Pendapatan Bulanan (Bersih)</label>
+        <div class="money"><span>RM</span><input id="fGaji" name="gaji" type="number" inputmode="numeric" min="0" step="50" required placeholder="Contoh: 3500" data-en-placeholder="e.g. 3500"></div>
       </div>
-      <label class="consent" for="fConsent"><input id="fConsent" type="checkbox" required> Saya bersetuju dihubungi oleh Salam Automobile berkenaan pertanyaan ini.</label>
+      <label class="consent" for="fConsent"><input id="fConsent" type="checkbox" required> <span data-en="I agree to be contacted by Salam Automobile about this enquiry.">Saya bersetuju dihubungi oleh Salam Automobile berkenaan pertanyaan ini.</span></label>
       <input class="hp" type="text" id="fWebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <p class="form-err" id="formErr" role="alert" hidden></p>
-      <button class="btn btn-gold btn-block" type="submit" id="fSubmit">Hantar &amp; Semak Kelayakan</button>
+      <button class="btn btn-gold btn-block" type="submit" id="fSubmit" data-en="Submit &amp; Check Eligibility">Hantar &amp; Semak Kelayakan</button>
       <div class="form-ok" id="formOk" hidden>
-        <strong>Terima kasih! Maklumat anda telah diterima.</strong>
-        <p>Kami akan menghubungi anda secepat mungkin. Untuk maklum balas segera, hubungi kami di WhatsApp.</p>
-        <a class="btn btn-gold js-wa-lead" href="#borang" target="_blank" rel="noopener">Hubungi Kami</a>
+        <strong data-en="Thank you! We have received your details.">Terima kasih! Maklumat anda telah diterima.</strong>
+        <p data-en="We will contact you as soon as possible. For a faster reply, contact us on WhatsApp.">Kami akan menghubungi anda secepat mungkin. Untuk maklum balas segera, hubungi kami di WhatsApp.</p>
+        <a class="btn btn-gold js-wa-lead" href="#borang" target="_blank" rel="noopener" data-en="Contact Us">Hubungi Kami</a>
       </div>
     </form>
   </div>
@@ -233,12 +237,13 @@
   <div class="wrap foot-in">
     <img src="assets/img/brand/logo-salam-light-text.webp" alt="Salam Automobile" width="900" height="598">
     <p>Muhammad Nabil Ahnaf · Authorised Sales Advisor | Founder Salam Automobile</p>
-    <p class="small">© <span id="year">2026</span> Salam Automobile. Harga dan kiraan di laman ini ialah anggaran dan boleh berubah tanpa notis.</p>
+    <p class="small">© <span id="year">2026</span> Salam Automobile. <span data-en="Prices and calculations on this site are estimates and may change without notice.">Harga dan kiraan di laman ini ialah anggaran dan boleh berubah tanpa notis.</span></p>
   </div>
 </footer>
 
-<script src="assets/js/settings.js"></script>
-<script src="assets/js/data.js"></script>
-<script src="assets/js/app.js"></script>
+<script src="assets/js/settings.js?v=20261126"></script>
+<script src="assets/js/data.js?v=20261126"></script>
+<script src="assets/js/i18n.js?v=20261126"></script>
+<script src="assets/js/app.js?v=20261126"></script>
 </body>
 </html>

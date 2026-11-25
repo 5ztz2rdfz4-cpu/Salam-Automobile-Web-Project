@@ -16,6 +16,7 @@
   function rm(n) { return "RM" + Math.round(n).toLocaleString("en-MY"); }
   function rm2(n) { return "RM" + (Math.round(n * 100) / 100).toLocaleString("en-MY", { minimumFractionDigits: 2, maximumFractionDigits: 2 }); }
   function pct(n) { return (Math.round(n * 100) / 100) + "%"; }
+  function L(ms, en) { return window.SALAM_LANG === "en" ? en : ms; }
   function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
 
@@ -78,7 +79,7 @@
       var p = minPrice(m);
       return '<button type="button" class="model" data-model="' + esc(m.id) + '" aria-pressed="' + (m.id === S.model) + '">' +
         '<img src="' + esc(m.image) + '" alt="">' +
-        "<b>" + esc(m.name) + "</b><small>" + (isFinite(p) ? "Dari " + rm(p) : "Hubungi kami") + "</small></button>";
+        "<b>" + esc(m.name) + "</b><small>" + (isFinite(p) ? L("Dari ", "From ") + rm(p) : L("Hubungi kami", "Contact us")) + "</small></button>";
     }).join("");
   }
   function renderVariants() {
@@ -125,21 +126,21 @@
     $("dpPctTxt").textContent = S.dpPct + "%";
     $("dpPctRm").textContent = rm(r.dp);
     if (document.activeElement !== $("dpRm")) $("dpRm").value = Math.round(S.dpRm);
-    $("dpRmPct").textContent = (r.otrIns ? (r.dp / r.otrIns * 100).toFixed(1) : 0) + "% daripada harga OTR termasuk insurans";
+    $("dpRmPct").textContent = (r.otrIns ? (r.dp / r.otrIns * 100).toFixed(1) : 0) + L("% daripada harga OTR termasuk insurans", "% of OTR price with insurance");
 
-    segButtons($("years"), cc.years, S.years, function (y) { return y + " thn"; });
+    segButtons($("years"), cc.years, S.years, function (y) { return y + L(" thn", " yrs"); });
     if (document.activeElement !== $("rate")) $("rate").value = S.rate.toFixed(2);
     segButtons($("ncd"), cc.ncdOptions, S.ncd, pct, "idx");
     segButtons($("ncd2"), cc.ncdOptions, S.ncd, pct, "idx");
 
     // Slip
     var mo = $("monthly");
-    mo.innerHTML = rm(r.monthly) + "<small>/bulan</small>";
+    mo.innerHTML = rm(r.monthly) + "<small>" + L("/bulan", "/month") + "</small>";
     if (lastMonthly !== null && Math.round(lastMonthly) !== Math.round(r.monthly)) { mo.classList.remove("pop"); void mo.offsetWidth; mo.classList.add("pop"); }
     lastMonthly = r.monthly;
-    $("slipMeta").textContent = v.name + " · " + S.years + " tahun (" + S.years * 12 + " bulan) · " + S.rate.toFixed(2) + "% fixed";
+    $("slipMeta").textContent = v.name + " · " + S.years + L(" tahun (", " years (") + S.years * 12 + L(" bulan) · ", " months) · ") + S.rate.toFixed(2) + "% fixed";
     $("rOtr").textContent = rm(r.price);
-    $("rInsLbl").textContent = "Insurans (NCD " + pct(r.ncd) + ")";
+    $("rInsLbl").textContent = L("Insurans", "Insurance") + " (NCD " + pct(r.ncd) + ")";
     $("rIns").textContent = "+ " + rm(r.insAfter);
     $("rOtrIns").textContent = rm(r.otrIns);
     $("rRebateRow").hidden = !r.rebate;
@@ -150,13 +151,13 @@
     var all = cc.years.map(function (y) { return { y: y, mo: calc(y).monthly }; });
     var mx = Math.max.apply(null, all.map(function (a) { return a.mo; })) || 1;
     $("bars").innerHTML = all.map(function (a) {
-      return '<button type="button" data-y="' + a.y + '" aria-pressed="' + (a.y === S.years) + '"><span>' + a.y + ' thn</span><i style="width:' + (a.mo / mx * 100).toFixed(1) + '%"></i><span>' + rm(a.mo) + "</span></button>";
+      return '<button type="button" data-y="' + a.y + '" aria-pressed="' + (a.y === S.years) + '"><span>' + a.y + L(' thn', ' yrs') + '</span><i style="width:' + (a.mo / mx * 100).toFixed(1) + '%"></i><span>' + rm(a.mo) + "</span></button>";
     }).join("");
 
     // Insurance section
     $("insModel").textContent = brandById(S.brand).name + " " + v.name;
     $("iBasic").textContent = rm2(r.basic);
-    $("iNcdLbl").textContent = "Diskaun NCD (" + pct(r.ncd) + ")";
+    $("iNcdLbl").textContent = L("Diskaun NCD", "NCD discount") + " (" + pct(r.ncd) + ")";
     $("iNcd").textContent = "− " + rm2(r.ncdAmt);
     $("iNet").textContent = rm2(r.insAfter);
     $("iRoad").textContent = rm2(r.roadtax);
@@ -170,22 +171,24 @@
   /* ---------- WhatsApp links ("Hubungi Kami") ---------- */
   function waNumber() { return String(C.business.whatsapp || "").replace(/\D/g, ""); }
   function wa(text) { return "https://wa.me/" + waNumber() + "?text=" + encodeURIComponent(text); }
-  function calcSummary() {
+  function calcSummary(forceMs) {
     var r = calc(), v = variant(), b = brandById(S.brand);
+    var en = !forceMs && window.SALAM_LANG === "en";
+    function T(ms, e) { return en ? e : ms; }
     return b.name + " " + v.name + "\n" +
-      "Harga OTR (tanpa insurans): " + rm(r.price) + "\n" +
-      "Harga OTR (termasuk insurans, NCD " + pct(r.ncd) + "): " + rm(r.otrIns) + "\n" +
-      (r.rebate ? "Rebat/diskaun: " + rm(r.rebate) + "\n" : "") +
-      "Deposit: " + rm(r.dp) + "\n" +
-      "Jumlah pinjaman: " + rm(r.loan) + "\n" +
-      "Tempoh: " + S.years + " tahun @ " + S.rate.toFixed(2) + "% fixed\n" +
-      "Anggaran ansuran: " + rm(r.monthly) + "/bulan";
+      T("Harga OTR (tanpa insurans): ", "OTR price (without insurance): ") + rm(r.price) + "\n" +
+      T("Harga OTR (termasuk insurans, NCD ", "OTR price (with insurance, NCD ") + pct(r.ncd) + "): " + rm(r.otrIns) + "\n" +
+      (r.rebate ? T("Rebat/diskaun: ", "Rebate/discount: ") + rm(r.rebate) + "\n" : "") +
+      T("Deposit: ", "Down payment: ") + rm(r.dp) + "\n" +
+      T("Jumlah pinjaman: ", "Loan amount: ") + rm(r.loan) + "\n" +
+      T("Tempoh: ", "Period: ") + S.years + T(" tahun @ ", " years @ ") + S.rate.toFixed(2) + "% fixed\n" +
+      T("Anggaran ansuran: ", "Estimated instalment: ") + rm(r.monthly) + T("/bulan", "/month");
   }
   function updateLinks() {
-    var general = wa("Assalamualaikum Salam Automobile, saya ingin bertanya tentang kereta baharu Proton / Perodua.");
+    var general = wa(L("Assalamualaikum Salam Automobile, saya ingin bertanya tentang kereta baharu Proton / Perodua.", "Hello Salam Automobile, I would like to ask about a new Proton / Perodua car."));
     document.querySelectorAll(".js-wa").forEach(function (a) { a.href = general; });
-    if (HAS_CALC) document.querySelectorAll(".js-wa-calc").forEach(function (a) { a.href = wa("Assalamualaikum Salam Automobile, saya berminat dengan kiraan ini:\n\n" + calcSummary() + "\n\nBoleh bantu semak kelayakan saya?"); });
-    document.querySelectorAll(".js-wa-trade").forEach(function (a) { a.href = wa("Assalamualaikum Salam Automobile, saya ingin menyemak nilai trade-in kereta lama saya. Butiran dan gambar geran akan saya kongsikan."); });
+    if (HAS_CALC) document.querySelectorAll(".js-wa-calc").forEach(function (a) { a.href = wa(L("Assalamualaikum Salam Automobile, saya berminat dengan kiraan ini:\n\n", "Hello Salam Automobile, I am interested in this calculation:\n\n") + calcSummary() + L("\n\nBoleh bantu semak kelayakan saya?", "\n\nCould you help check my eligibility?")); });
+    document.querySelectorAll(".js-wa-trade").forEach(function (a) { a.href = wa(L("Assalamualaikum Salam Automobile, saya ingin menyemak nilai trade-in kereta lama saya. Butiran dan gambar geran akan saya kongsikan.", "Hello Salam Automobile, I would like to check the trade-in value of my current car. I will share the details and registration card photo.")); });
     var n = waNumber();
     if (!$("waTxt")) return;
     $("waTxt").textContent = "WhatsApp " + (n ? "+" + n.replace(/^(60)(\d{2})(\d{3,4})(\d{4})$/, "$1 $2-$3 $4") : "");
@@ -200,7 +203,7 @@
     var g = $("gallery");
     var list = (C.delivery || []).filter(Boolean);
     g.innerHTML = list.map(function (src, i) {
-      return '<button type="button" data-src="' + esc(src) + '" aria-label="Besarkan gambar delivery ' + (i + 1) + '"><img src="' + esc(src) + '" alt="Serahan kereta baharu kepada pelanggan Salam Automobile" loading="lazy" width="600" height="800"></button>';
+      return '<button type="button" data-src="' + esc(src) + '" aria-label="' + L("Besarkan gambar delivery ", "Enlarge delivery photo ") + (i + 1) + '"><img src="' + esc(src) + '" alt="' + L("Serahan kereta baharu kepada pelanggan Salam Automobile", "New car handover to a Salam Automobile customer") + '" loading="lazy" width="600" height="800"></button>';
     }).join("");
     $("delivery").hidden = !list.length;
   }
@@ -209,12 +212,12 @@
   /* ---------- Lead form ---------- */
   function fillModelSelect() {
     var sel = $("fModel"), cur = sel.value;
-    var html = '<option value="">Pilih model</option>';
+    var html = '<option value="">' + L("Pilih model", "Choose a model") + "</option>";
     C.brands.forEach(function (b) {
       var ms = activeModels(b); if (!ms.length) return;
       html += '<optgroup label="' + esc(b.name) + '">' + ms.map(function (m) { var val = b.name + " " + m.name; return '<option value="' + esc(val) + '">' + esc(val) + "</option>"; }).join("") + "</optgroup>";
     });
-    html += '<option value="Belum pasti">Belum pasti / perlukan cadangan</option>';
+    html += '<option value="Belum pasti">' + L("Belum pasti / perlukan cadangan", "Not sure yet / need advice") + "</option>";
     sel.innerHTML = html;
     if (cur) sel.value = cur;
   }
@@ -233,7 +236,7 @@
     var consent = $("fConsent").checked; if (!consent) { ok = false; first = first || $("fConsent"); }
     var err = $("formErr");
     if (!ok) {
-      err.textContent = !phoneOk($("fPhone").value) && $("fPhone").value ? "Sila semak No. Phone (contoh: 012-345 6789)." : (!consent && first === $("fConsent") ? "Sila tandakan persetujuan untuk dihubungi." : "Sila lengkapkan semua maklumat yang bertanda merah.");
+      err.textContent = !phoneOk($("fPhone").value) && $("fPhone").value ? L("Sila semak No. Phone (contoh: 012-345 6789).", "Please check your phone number (e.g. 012-345 6789).") : (!consent && first === $("fConsent") ? L("Sila tandakan persetujuan untuk dihubungi.", "Please tick the box to agree to be contacted.") : L("Sila lengkapkan semua maklumat yang bertanda merah.", "Please complete all fields marked in red."));
       err.hidden = false; if (first) first.focus();
     } else err.hidden = true;
     return ok;
@@ -249,15 +252,15 @@
       phone: normPhone($("fPhone").value),
       kerja: (f.querySelector('input[name="kerja"]:checked') || {}).value || "",
       gaji: num($("fGaji").value),
-      calc: HAS_CALC ? calcSummary().replace(/\n/g, " | ") : "",
+      calc: HAS_CALC ? calcSummary(true).replace(/\n/g, " | ") : "",
       website: $("fWebsite").value,
       page: location.href.split("#")[0]
     };
   }
   function leadWaText(d) {
-    return "Assalamualaikum Salam Automobile, saya ingin semak kelayakan loan.\n\n" +
-      "Nama: " + d.nama + "\nLokasi: " + d.lokasi + "\nModel kereta: " + d.model + "\nNo. phone: " + d.phone +
-      "\nJenis pekerjaan: " + d.kerja + "\nPendapatan bersih: " + rm(d.gaji) + (HAS_CALC ? "\n\nKiraan di website:\n" + calcSummary() : "");
+    return L("Assalamualaikum Salam Automobile, saya ingin semak kelayakan loan.\n\n", "Hello Salam Automobile, I would like to check my loan eligibility.\n\n") +
+      L("Nama: ", "Name: ") + d.nama + L("\nLokasi: ", "\nLocation: ") + d.lokasi + L("\nModel kereta: ", "\nCar model: ") + d.model + L("\nNo. phone: ", "\nPhone: ") + d.phone +
+      L("\nJenis pekerjaan: ", "\nEmployment: ") + d.kerja + L("\nPendapatan bersih: ", "\nNet income: ") + rm(d.gaji) + (HAS_CALC ? L("\n\nKiraan di website:\n", "\n\nWebsite calculation:\n") + calcSummary() : "");
   }
 
   function submitLead(e) {
@@ -276,10 +279,10 @@
     if (!API) {
       // Belum disambung ke Google Sheet: terus ke WhatsApp dengan semua butiran.
       done();
-      $("formOk").querySelector("strong").textContent = "Satu langkah lagi: hantar butiran anda melalui WhatsApp.";
+      $("formOk").querySelector("strong").textContent = L("Satu langkah lagi: hantar butiran anda melalui WhatsApp.", "One more step: send your details through WhatsApp.");
       return;
     }
-    btn.disabled = true; btn.textContent = "Menghantar…";
+    btn.disabled = true; btn.textContent = L("Menghantar…", "Sending…");
     var ctrl = window.AbortController ? new AbortController() : null;
     var timer = setTimeout(function () { if (ctrl) ctrl.abort(); }, 15000);
     fetch(API, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(d), signal: ctrl ? ctrl.signal : undefined })
@@ -287,8 +290,8 @@
       .then(function (j) { clearTimeout(timer); if (!j || !j.ok) throw new Error((j && j.error) || "gagal"); done(); })
       .catch(function () {
         clearTimeout(timer);
-        btn.disabled = false; btn.textContent = "Hantar & Semak Kelayakan";
-        err.innerHTML = 'Maaf, borang tidak dapat dihantar sekarang. Sila <a href="' + esc(waLink) + '" target="_blank" rel="noopener">hantar butiran melalui WhatsApp</a> atau cuba lagi.';
+        btn.disabled = false; btn.textContent = L("Hantar & Semak Kelayakan", "Submit & Check Eligibility");
+        err.innerHTML = L("Maaf, borang tidak dapat dihantar sekarang. Sila ", "Sorry, the form could not be sent right now. Please ") + '<a href="' + esc(waLink) + '" target="_blank" rel="noopener">' + L("hantar butiran melalui WhatsApp", "send your details by WhatsApp") + "</a>" + L(" atau cuba lagi.", " or try again.");
         err.hidden = false;
       });
   }
@@ -356,6 +359,11 @@
     if (HAS_FORM) fillModelSelect();
   }
   bind(); boot();
+  document.addEventListener("salam:lang", function () {
+    if (HAS_CALC) { renderAll(false); } else updateLinks();
+    if (HAS_GALLERY) renderGallery();
+    if (HAS_FORM) { fillModelSelect(); $("formErr").hidden = true; }
+  });
 
   if (API) {
     var ctrl = window.AbortController ? new AbortController() : null;
