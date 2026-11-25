@@ -498,7 +498,7 @@ window.SALAM_DEFAULT_CONFIG = {
               "insurance": 2100.9
             },
             {
-              "name": "Traz 1.5 H (S.Metallic) – RM84,200",
+              "name": "Traz 1.5 H (S.Metallic) II",
               "price": 84200,
               "insurance": 2150.8
             }
