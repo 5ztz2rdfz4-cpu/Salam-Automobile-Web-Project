@@ -297,6 +297,22 @@ fieldset.field, .lead-form .consent, .lead-form .btn, .form-err, .form-ok { grid
 .foot p { margin: 4px 0; }
 .foot .small { font-size: 12px; opacity: .8; }
 
+/* Dark pages (Kalkulator Loan, Delivery): same charcoal theme as the home hero */
+body.page-dark {
+  --paper: #16181c; --paper-2: #1b1e23; --card: #22252b; --ink: #eef0f3; --mute: #a7adb5;
+  --line: #33373e; --gold-ink: #e0bd84; --gold-soft: #3a3124; --plate: #f4f4f2;
+  --night: #0e1013; --night-2: #1a1d22; --night-line: #2e3238; --ok: #7fd3a0;
+  --shadow: 0 14px 34px rgba(0, 0, 0, .35);
+  color-scheme: dark;
+}
+.page-dark .page-first { background: radial-gradient(120% 60% at 85% 0%, #2a2d33 0%, var(--paper) 60%); }
+.page-dark .band-alt { background: var(--paper-2); }
+.page-dark .band-night { background: var(--night); border-top: 1px solid var(--night-line); }
+.page-dark .slip { border: 1px solid var(--night-line); }
+.page-dark .stage { background: radial-gradient(90% 70% at 50% 30%, #2c3037 0%, var(--card) 100%); }
+.page-dark .stage-floor { background: radial-gradient(closest-side, rgba(0, 0, 0, .55), transparent); }
+.page-dark .lead-form { border: 1px solid var(--line); }
+
 @media (max-width: 980px) {
   .facts-in { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
